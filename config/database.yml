@@ -20,8 +20,8 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: dev
-  password: root
+  username: hellorails
+  password: hellorails
 
 development:
   <<: *default
@@ -60,7 +60,7 @@ development:
 test:
   <<: *default
   database: e_learning_academy_test
-  
+
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -86,4 +86,3 @@ production:
   database: e_learning_academy_production
   username: e_learning_academy
   password: <%= ENV["E_LEARNING_ACADEMY_DATABASE_PASSWORD"] %>
-

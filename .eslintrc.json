@@ -30,6 +30,8 @@
     ],
     "ignorePatterns": [
       "dist/",
-      "build/"
+      "build/",
+      "app/javascript/controllers",
+      "app/assets"
     ]
   }
