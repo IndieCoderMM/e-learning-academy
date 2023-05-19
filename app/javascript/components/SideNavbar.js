@@ -8,7 +8,6 @@ function SideNavbar() {
       <Link to="/reservation">Reservation</Link>
       <Link to="/new_course">New Course</Link>
       <Link to="/delete_course">Delete Course</Link>
-      <Link to="/login">Log In</Link>
     </div>
   );
 }

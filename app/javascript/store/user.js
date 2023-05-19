@@ -1,12 +1,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-export const logInUser = createAsyncThunk(
-  'users/login',
+const getCSRFToken = () => {
+  const csrfTag = document.querySelector('meta[name=csrf-token]');
+  return csrfTag ? csrfTag.content : '';
+};
+
+export const loginUser = createAsyncThunk(
+  'user/login',
   async ({ username }) => {
     const res = await fetch('/users/login', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username }),
+
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': getCSRFToken(),
+      },
+      body: JSON.stringify({ user: { name: username } }),
     });
 
     const data = await res.json();
@@ -16,12 +25,15 @@ export const logInUser = createAsyncThunk(
 );
 
 export const registerUser = createAsyncThunk(
-  'users/register',
+  'user/register',
   async ({ username }) => {
     const res = await fetch('/users/register', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username }),
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': getCSRFToken(),
+      },
+      body: JSON.stringify({ user: { name: username } }),
     });
     const data = await res.json();
     console.log(data);
@@ -34,21 +46,14 @@ const initialState = {
   name: '',
   id: null,
   error: '',
-  message: '',
 };
 
 const userSlice = createSlice({
-  name: 'users',
+  name: 'user',
   initialState,
   extraReducers(builder) {
     builder
       .addCase(registerUser.fulfilled, (state, action) => {
-        return { ...state, name: action.payload.name, id: action.payload.id };
-      })
-      .addCase(registerUser.rejected, (state, action) => {
-        return { ...state, status: 'error', error: action.payload.errors };
-      })
-      .addCase(logInUser.fulfilled, (state, action) => {
         return {
           ...state,
           status: 'success',
@@ -56,8 +61,19 @@ const userSlice = createSlice({
           id: action.payload.id,
         };
       })
-      .addCase(logInUser.rejected, (state, action) => {
-        return { ...state, status: 'error', error: action.payload.errors };
+      .addCase(registerUser.rejected, (state, action) => {
+        return { ...state, status: 'error', error: action.payload.message };
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        return {
+          ...state,
+          status: 'success',
+          name: action.payload.name,
+          id: action.payload.id,
+        };
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        return { ...state, status: 'error', error: action.payload.message };
       });
   },
 });

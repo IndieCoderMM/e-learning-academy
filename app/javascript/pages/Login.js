@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { loginUser, registerUser } from '../store/user';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [mode, setMode] = useState('login');
+  const dispatch = useDispatch();
 
   const changeMode = () => {
     setMode((current) => {
@@ -20,6 +23,11 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Username:', username);
+    if (mode === 'login') {
+      dispatch(loginUser({ username }));
+    } else {
+      dispatch(registerUser({ username }));
+    }
   };
 
   return (
