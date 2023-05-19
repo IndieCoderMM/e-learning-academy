@@ -25,6 +25,7 @@
   "dependencies": {
     "@babel/preset-env": "^7.21.5",
     "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.4.0",
     "babel-loader": "^9.1.2",
     "bootstrap": "^5.2.3",
     "react": "^18.2.0",
