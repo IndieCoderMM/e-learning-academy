@@ -10,16 +10,18 @@ export const loginUser = createAsyncThunk(
   async ({ username }) => {
     const res = await fetch('/users/login', {
       method: 'POST',
-
       headers: {
         'Content-Type': 'application/json',
         'X-CSRF-Token': getCSRFToken(),
       },
       body: JSON.stringify({ user: { name: username } }),
     });
-
     const data = await res.json();
-    console.log(data);
+
+    if (!res.ok) {
+      throw new Error(data.message);
+    }
+
     return data;
   },
 );
@@ -35,8 +37,12 @@ export const registerUser = createAsyncThunk(
       },
       body: JSON.stringify({ user: { name: username } }),
     });
+
     const data = await res.json();
-    console.log(data);
+
+    if (!res.ok) {
+      throw new Error(data.message);
+    }
     return data;
   },
 );
@@ -53,28 +59,28 @@ const userSlice = createSlice({
   initialState,
   extraReducers(builder) {
     builder
-      .addCase(registerUser.fulfilled, (state, action) => {
-        return {
-          ...state,
-          status: 'success',
-          name: action.payload.name,
-          id: action.payload.id,
-        };
-      })
-      .addCase(registerUser.rejected, (state, action) => {
-        return { ...state, status: 'error', error: action.payload.message };
-      })
-      .addCase(loginUser.fulfilled, (state, action) => {
-        return {
-          ...state,
-          status: 'success',
-          name: action.payload.name,
-          id: action.payload.id,
-        };
-      })
-      .addCase(loginUser.rejected, (state, action) => {
-        return { ...state, status: 'error', error: action.payload.message };
-      });
+      .addCase(registerUser.fulfilled, (state, action) => ({
+        ...state,
+        status: 'success',
+        name: action.payload.name,
+        id: action.payload.id,
+      }))
+      .addCase(registerUser.rejected, (state, action) => ({
+        ...state,
+        status: 'error',
+        error: action.error.message,
+      }))
+      .addCase(loginUser.fulfilled, (state, action) => ({
+        ...state,
+        status: 'success',
+        name: action.payload.name,
+        id: action.payload.id,
+      }))
+      .addCase(loginUser.rejected, (state, action) => ({
+        ...state,
+        status: 'error',
+        error: action.error.message,
+      }));
   },
 });
 

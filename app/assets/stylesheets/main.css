@@ -16,3 +16,7 @@ body {
   background-color: var(--primary-green);
   color: #fff;
 }
+
+.login-form {
+  max-width: 500px;
+}

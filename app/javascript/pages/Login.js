@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { loginUser, registerUser } from '../store/user';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [mode, setMode] = useState('login');
+  const userData = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const changeMode = () => {
     setMode((current) => {
-      console.log(current);
       if (current === 'login') return 'signup';
-      else return 'login';
+      return 'login';
     });
   };
 
@@ -22,13 +24,18 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Username:', username);
     if (mode === 'login') {
       dispatch(loginUser({ username }));
     } else {
       dispatch(registerUser({ username }));
     }
   };
+
+  useEffect(() => {
+    if (userData.status === 'success') {
+      navigate('/');
+    }
+  }, [userData, navigate]);
 
   return (
     <Container
@@ -39,9 +46,12 @@ function Login() {
       <h2>
         {mode === 'login' ? 'Log In To Existing Account' : 'Register New User'}
       </h2>
+      {userData.status === 'error' && (
+        <p className="text-danger">{userData.error}</p>
+      )}
       <Form
         onSubmit={handleSubmit}
-        className="d-flex flex-column p-3 text-dark bg-white rounded gap-2 w-75"
+        className="d-flex flex-column p-3 text-dark bg-white rounded gap-3 w-100 login-form"
       >
         <Form.Group controlId="username">
           <Form.Label>Username:</Form.Label>
