@@ -2,6 +2,7 @@
   "name": "app",
   "private": "true",
   "scripts": {
+    "watch": "webpack --config webpack.config.js --watch --mode development",
     "build": "webpack --config webpack.config.js"
   },
   "devDependencies": {
@@ -25,7 +26,9 @@
     "@babel/preset-env": "^7.21.5",
     "@reduxjs/toolkit": "^1.9.5",
     "babel-loader": "^9.1.2",
+    "bootstrap": "^5.2.3",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.2",
