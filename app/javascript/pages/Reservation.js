@@ -18,11 +18,11 @@ function Reservation() {
 
   console.log(reservationData);
   return (
-    <Container>
+    <Container className="reservation-page" fluid>
       <h2>Enrolled Courses</h2>
       <Row>
         {reservationData.map((reservation) => (
-          <Col key={reservation.id}>
+          <Col key={reservation.id} md={4}>
             <ReservedCourse
               course={reservation.course}
               date={reservation.date}

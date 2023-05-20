@@ -12,8 +12,6 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
-gem 'bootstrap', '~> 5.3.0.alpha3'
-
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 

@@ -8,6 +8,7 @@ import NewCourse from '../pages/NewCourse';
 import DeleteCourse from '../pages/DeleteCourse';
 import SideNavbar from './SideNavbar';
 import Login from '../pages/Login';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const currentUser = useSelector((state) => state.user.name);

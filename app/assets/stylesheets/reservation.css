@@ -1,0 +1,59 @@
+.reservation-page {
+  background-color: #fff;
+}
+
+.reserved-item {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.reserved-item__title {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.reserved-item hr {
+  width: 80%;
+  height: 1px;
+  border: none;
+  background-color: #ccc;
+}
+
+.reserved-item p {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.2;
+}
+
+.reserved-item__meta {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.reserved-item__meta div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.reserved-item__meta p {
+  font-size: 0.5rem;
+}
+
+.reserved-item__icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px #ccc;
+}
