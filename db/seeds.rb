@@ -9,7 +9,7 @@ Course.destroy_all
         description: "This is course #{n+1} description.",
         price: rand(50..200),
         duration: rand(20..60),
-        img_url: "https://example.com/course#{n+1}.jpg",
+        img_url: "https://picsum.photos/500/300",
         instructor: "Instructor #{n+1}"
     )
 end

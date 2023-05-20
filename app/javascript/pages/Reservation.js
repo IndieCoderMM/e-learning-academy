@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserReservations } from '../store/reservation';
+import ReservedCourse from '../components/ReservedCourse';
 
 function Reservation() {
   const reservationStatus = useSelector((state) => state.reservations.status);
@@ -19,6 +20,17 @@ function Reservation() {
   return (
     <Container>
       <h2>Enrolled Courses</h2>
+      <Row>
+        {reservationData.map((reservation) => (
+          <Col key={reservation.id}>
+            <ReservedCourse
+              course={reservation.course}
+              date={reservation.date}
+              city={reservation.city}
+            />
+          </Col>
+        ))}
+      </Row>
     </Container>
   );
 }
