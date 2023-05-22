@@ -1,4 +1,9 @@
 import React from 'react';
+import {
+  FaGraduationCap,
+  FaMapMarkerAlt,
+  FaCalendarCheck,
+} from 'react-icons/fa';
 
 const ReservedCourse = ({ course, date, city }) => {
   return (
@@ -11,15 +16,21 @@ const ReservedCourse = ({ course, date, city }) => {
       <p>{course.description}</p>
       <div className="reserved-item__meta">
         <div>
-          <span className="reserved-item__icon">🎓</span>
+          <span className="reserved-item__icon">
+            <FaGraduationCap />
+          </span>
           <p>{course.instructor}</p>
         </div>
         <div>
-          <span className="reserved-item__icon">📍</span>
+          <span className="reserved-item__icon">
+            <FaMapMarkerAlt />
+          </span>
           <p>{city}</p>
         </div>
         <div>
-          <span className="reserved-item__icon">📅</span>
+          <span className="reserved-item__icon">
+            <FaCalendarCheck />
+          </span>
           <p>{date}</p>
         </div>
       </div>

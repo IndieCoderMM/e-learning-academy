@@ -1,5 +1,12 @@
 .reservation-page {
   background-color: #fff;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.page-title {
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .reserved-item {
@@ -7,18 +14,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
   text-align: center;
 }
 
 .reserved-item__title {
   font-size: 1.2rem;
   text-transform: uppercase;
+  font-weight: 700;
   margin: 0;
 }
 
 .reserved-item hr {
   width: 80%;
   height: 1px;
+  margin: 0;
   border: none;
   background-color: #ccc;
 }
@@ -31,9 +41,9 @@
 
 .reserved-item__meta {
   flex: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
   width: 100%;
 }
 
@@ -41,11 +51,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.5rem;
   text-align: center;
 }
 
 .reserved-item__meta p {
-  font-size: 0.5rem;
+  font-size: 0.7rem;
 }
 
 .reserved-item__icon {
@@ -55,5 +66,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: solid 1px #ccc;
+  border: solid 2px #aaa;
+  color: #aaa;
 }
