@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   --primary-green: #96bf01;
 }
@@ -9,7 +14,6 @@ body {
 .page-section {
   background-color: aliceblue;
   min-height: 100vh;
-  width: 100%;
 }
 
 .login-page {

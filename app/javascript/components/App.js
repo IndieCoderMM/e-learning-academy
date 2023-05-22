@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Stack from 'react-bootstrap/Stack';
 import { useSelector } from 'react-redux';
+import { Container } from 'react-bootstrap';
 import Home from '../pages/Home';
 import Reservation from '../pages/Reservation';
 import NewCourse from '../pages/NewCourse';
@@ -13,18 +14,18 @@ function App() {
   const currentUser = useSelector((state) => state.user.name);
   return (
     <main>
-      <header className="d-flex justify-content-between w-100 bg-light">
-        <h1 className="fs-3">ELearningAcademy</h1>
-        {currentUser && (
-          <p>
-            Logged In as:
-            {currentUser}
-          </p>
-        )}
-      </header>
       <Stack direction="horizontal">
         <SideNavbar />
-        <section className="page-section">
+        <Container className="page-section p-0" fluid>
+          <header className="d-flex justify-content-between bg-light">
+            <h1 className="fs-3">ELearningAcademy</h1>
+            {currentUser && (
+              <p>
+                Logged In as:
+                {currentUser}
+              </p>
+            )}
+          </header>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -32,7 +33,7 @@ function App() {
             <Route path="/reservation" element={<Reservation />} />
             <Route path="/delete_course" element={<DeleteCourse />} />
           </Routes>
-        </section>
+        </Container>
       </Stack>
     </main>
   );
