@@ -1,7 +1,7 @@
 # Clear existing data
-Reservation.destroy_all
-User.destroy_all
-Course.destroy_all
+# Reservation.destroy_all
+# User.destroy_all
+# Course.destroy_all
 
 6.times do |n|
     course = Course.create!(
