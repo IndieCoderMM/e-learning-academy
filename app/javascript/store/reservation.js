@@ -10,8 +10,6 @@ export const getUserReservations = createAsyncThunk(
       throw new Error(data.message);
     }
 
-    console.log(data);
-
     return data;
   },
 );
@@ -27,15 +25,21 @@ const reservationSlice = createSlice({
   initialState,
   extraReducers(builder) {
     builder
-      .addCase(getUserReservations.pending, (state) => {
-        return { ...state, status: 'loading', error: null };
-      })
-      .addCase(getUserReservations.fulfilled, (state, action) => {
-        return { ...state, status: 'success', data: action.payload };
-      })
-      .addCase(getUserReservations.rejected, (state, action) => {
-        return { ...state, status: 'error', error: action.error.message };
-      });
+      .addCase(getUserReservations.pending, (state) => ({
+        ...state,
+        status: 'loading',
+        error: null,
+      }))
+      .addCase(getUserReservations.fulfilled, (state, action) => ({
+        ...state,
+        status: 'success',
+        data: action.payload,
+      }))
+      .addCase(getUserReservations.rejected, (state, action) => ({
+        ...state,
+        status: 'error',
+        error: action.error.message,
+      }));
   },
 });
 

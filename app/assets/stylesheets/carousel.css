@@ -84,6 +84,3 @@
   background-color: var(--primary-green);
   transform: scale(1.1);
 }
-
-@media (max-width: 768px) {
-}

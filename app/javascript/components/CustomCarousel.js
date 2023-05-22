@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { useSnapCarousel } from 'react-snap-carousel';
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
 import { Container } from 'react-bootstrap';
@@ -17,9 +18,10 @@ const CustomCarousel = ({ items }) => {
   return (
     <Container className="p-0" fluid>
       <div className="d-flex justify-content-center gap-1">
-        {pages.map((_, i) => (
+        {pages.map((p, i) => (
           <button
-            key={i}
+            key={p}
+            type="button"
             onClick={() => goTo(i)}
             className={`pagination-btn ${
               activePageIndex === i ? 'active' : ''
@@ -35,21 +37,25 @@ const CustomCarousel = ({ items }) => {
             activePageIndex === 0 ? 'disabled' : ''
           }`}
         >
-          <button onClick={() => prev()} className="carousel__arrow">
+          <button
+            type="button"
+            onClick={() => prev()}
+            className="carousel__arrow"
+          >
             <BiLeftArrow />
           </button>
         </div>
 
         <ul ref={scrollRef} className="carousel">
-          {items.map((element, i) => (
+          {items.map((item, i) => (
             <li
-              key={i}
+              key={item.key}
               className="carousel__item"
               style={{
                 scrollSnapAlign: snapPointIndexes.has(i) ? 'start' : '',
               }}
             >
-              {element}
+              {item.element}
             </li>
           ))}
         </ul>
@@ -59,13 +65,26 @@ const CustomCarousel = ({ items }) => {
             activePageIndex === pages.length - 1 ? 'disabled' : ''
           }`}
         >
-          <button onClick={() => next()} className="carousel__arrow">
+          <button
+            type="button"
+            onClick={() => next()}
+            className="carousel__arrow"
+          >
             <BiRightArrow />
           </button>
         </div>
       </div>
     </Container>
   );
+};
+
+const ItemPropType = PropTypes.shape({
+  element: PropTypes.element.isRequired,
+  key: PropTypes.number.isRequired,
+});
+
+CustomCarousel.propTypes = {
+  items: PropTypes.arrayOf(ItemPropType).isRequired,
 };
 
 export default CustomCarousel;
