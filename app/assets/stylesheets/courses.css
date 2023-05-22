@@ -1,0 +1,17 @@
+.courses-container {
+    display: flex;
+}
+.single-course {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.course-details {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+}
