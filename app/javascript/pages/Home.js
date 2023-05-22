@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {
+  FaGraduationCap,
+  FaClock,
+  FaMoneyBillAlt,
+} from 'react-icons/fa';
 import { coursesActions } from '../store/coursesSlice';
 
 const Home = () => {
@@ -16,27 +21,40 @@ const Home = () => {
   }
 
   return (
-    <div>
-      <h1>All Courses</h1>
+    <div className="courses-container">
       {courses.map((course) => (
-        <div key={course.id}>
-          <h2>{course.title}</h2>
+        <div key={course.id} className="single-course">
+          <img src={course.img_url} alt={course.title} className="d-block w-25" />
+          <h2 className="reserved-item__title">{course.title}</h2>
           <p>{course.description}</p>
-          <p>
-            Price: $
-            {course.price}
-          </p>
-          <p>
-            Duration:
-            {course.duration}
-            {' '}
-            minutes
-          </p>
-          <img src={course.img_url} alt={course.title} />
-          <p>
-            Instructor:
-            {course.instructor}
-          </p>
+          <div className="course-details">
+            <div>
+              <span>
+                <FaMoneyBillAlt />
+                {' '}
+              </span>
+              <p>
+                $
+                {course.price}
+              </p>
+            </div>
+            <div>
+              <span>
+                <FaClock />
+              </span>
+              <p>
+                {course.duration}
+                {' '}
+                minutes
+              </p>
+            </div>
+            <div>
+              <span>
+                <FaGraduationCap />
+              </span>
+              <p>{course.instructor}</p>
+            </div>
+          </div>
         </div>
       ))}
     </div>
