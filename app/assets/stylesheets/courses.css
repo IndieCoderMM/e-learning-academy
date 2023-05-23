@@ -1,13 +1,22 @@
-.courses-container {
+.courses-section {
     display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
 }
+
+.all-courses {
+    align-self: center;
+    margin-top: 1rem;
+}
+
 .single-course {
     padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
     text-align: center;
+    border: 1px solid red;
 }
 
 .course-details {
@@ -15,3 +24,11 @@
     align-items: center;
     gap: 1.8rem;
 }
+
+.course-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
