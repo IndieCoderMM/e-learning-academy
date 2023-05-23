@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post '/users/register', to: 'users#create'
 
   namespace :api do
-    resources :courses
+    resources :courses, only: [:index, :create]
   end
 
   get '/users/:user_id/reservations', to: 'reservations#index'
