@@ -84,5 +84,5 @@ test:
 production:
   <<: *default
   database: e_learning_academy_production
-  username: e_learning_academy
-  password: <%= ENV["E_LEARNING_ACADEMY_DATABASE_PASSWORD"] %>
+  username: dev
+  password: root
