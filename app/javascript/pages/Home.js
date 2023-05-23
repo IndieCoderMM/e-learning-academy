@@ -1,62 +1,46 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  FaGraduationCap,
-  FaClock,
-  FaMoneyBillAlt,
-} from 'react-icons/fa';
 import { coursesActions } from '../store/coursesSlice';
+import CourseItem from '../components/CourseItem';
+import CustomCarousel from '../components/CustomCarousel';
 
 const Home = () => {
   const dispatch = useDispatch();
   const courses = useSelector((state) => state.courses.courses);
   const loading = useSelector((state) => state.courses.loading);
+  let coursesItems = [];
 
   useEffect(() => {
     dispatch(coursesActions.fetchCourses());
   }, [dispatch]);
+
+  if (courses.length) {
+    coursesItems = [];
+    courses.forEach((course) => {
+      const item = {
+        element: (
+          <CourseItem
+            course={course}
+          />
+        ),
+        key: course.id,
+      };
+      coursesItems.push(item);
+    });
+  }
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className="courses-container">
-      {courses.map((course) => (
-        <div key={course.id} className="single-course">
-          <img src={course.img_url} alt={course.title} className="d-block w-25" />
-          <h2 className="reserved-item__title">{course.title}</h2>
-          <p>{course.description}</p>
-          <div className="course-details">
-            <div>
-              <span>
-                <FaMoneyBillAlt />
-                {' '}
-              </span>
-              <p>
-                $
-                {course.price}
-              </p>
-            </div>
-            <div>
-              <span>
-                <FaClock />
-              </span>
-              <p>
-                {course.duration}
-                {' '}
-                minutes
-              </p>
-            </div>
-            <div>
-              <span>
-                <FaGraduationCap />
-              </span>
-              <p>{course.instructor}</p>
-            </div>
-          </div>
-        </div>
-      ))}
+    <div className="courses-section">
+      <h1 className="all-courses">
+        All available courses:
+        {' '}
+        <b>{coursesItems.length}</b>
+      </h1>
+      <CustomCarousel items={coursesItems} />
     </div>
   );
 };
