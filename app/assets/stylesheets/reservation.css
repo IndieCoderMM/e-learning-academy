@@ -1,14 +1,3 @@
-.reservation-page {
-  background-color: #fff;
-  text-align: center;
-  padding: 0.5rem;
-}
-
-.page-title {
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
 .reserved-item {
   padding: 1rem;
   display: flex;

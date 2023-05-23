@@ -15,7 +15,7 @@ function App() {
     <main>
       <Stack direction="horizontal">
         <SideNavbar />
-        <Container className="page-section p-0" fluid>
+        <Container className="p-0 main-content" fluid>
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />

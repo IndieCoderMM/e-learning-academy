@@ -70,8 +70,8 @@ const ReservationAlert = () => {
   };
 
   return (
-    <div className="p-2">
-      <Alert variant={state.variant} show={state.show}>
+    <div>
+      <Alert variant={state.variant} show={state.show} className="w-75 mx-auto">
         <Alert.Heading>{state.title}</Alert.Heading>
         <p>{state.p}</p>
         <hr />

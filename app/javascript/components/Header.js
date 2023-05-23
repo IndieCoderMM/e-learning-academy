@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   ButtonGroup,
@@ -11,7 +11,6 @@ import { BiLogInCircle } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOutUser } from '../store/user';
-
 const Header = () => {
   const currentUser = useSelector((state) => state.user.name);
   const dispatch = useDispatch();
@@ -21,7 +20,7 @@ const Header = () => {
   };
 
   return (
-    <header className="d-flex justify-content-between p-1 page-header">
+    <header className="d-flex justify-content-between p-1 main-header">
       <div className="d-flex align-items-center gap-1">
         <button
           type="button"

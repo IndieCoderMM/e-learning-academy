@@ -44,8 +44,8 @@ function Reservation() {
   }
 
   return (
-    <div className="reservation-page">
-      <h2 className="page-title">Enrolled Courses</h2>
+    <section className="page">
+      <h2 className="page__title">Enrolled Courses</h2>
       <ReservationAlert />
       {reservedItems.length > 0 && currentUser.id != null ? (
         <div>
@@ -55,7 +55,7 @@ function Reservation() {
           <CustomCarousel items={reservedItems} />
         </div>
       ) : null}
-    </div>
+    </section>
   );
 }
 
