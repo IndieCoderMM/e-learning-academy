@@ -8,7 +8,7 @@ import {
 
 const CourseItem = ({ course }) => (
   <div key={course.id} className="single-course">
-    <img src={course.img_url} alt={course.title} className="d-block w-50 h-50" style={{ height: '100 px' }} />
+    <img src={course.img_url} alt={course.title} className="d-block w-100" style={{ height: '200px' }} />
     <h3 className="reserved-item__title">{course.title}</h3>
     <p>{course.description}</p>
     <div className="course-details">
