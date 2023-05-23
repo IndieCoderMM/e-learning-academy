@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Stack from 'react-bootstrap/Stack';
-import { useSelector } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import Home from '../pages/Home';
 import Reservation from '../pages/Reservation';
