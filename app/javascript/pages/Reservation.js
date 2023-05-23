@@ -14,8 +14,14 @@ function Reservation() {
 
   // Getting reserved courses from backend
   useEffect(() => {
-    if (reservationStatus === 'idle' && currentUser.id != null) {
-      dispatch(getUserReservations(currentUser.id));
+    if (currentUser.id != null) {
+      if (
+        reservationStatus === 'idle' ||
+        (reservationData.length > 0 &&
+          reservationData[0].user_id !== currentUser.id)
+      ) {
+        dispatch(getUserReservations(currentUser.id));
+      }
     }
   }, [reservationStatus, currentUser.id, dispatch]);
 
@@ -41,18 +47,14 @@ function Reservation() {
     <div className="reservation-page">
       <h2 className="page-title">Enrolled Courses</h2>
       <ReservationAlert />
-      {reservedItems.length > 0 && (
+      {reservedItems.length > 0 && currentUser.id != null ? (
         <div>
           <p className="fs-5 text-muted">
-            You have enrolled to
-            {' '}
-            <b>{reservedItems.length}</b>
-            {' '}
-            courses.
+            You have enrolled to <b>{reservedItems.length}</b> courses.
           </p>
           <CustomCarousel items={reservedItems} />
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

@@ -9,23 +9,15 @@ import NewCourse from '../pages/NewCourse';
 import DeleteCourse from '../pages/DeleteCourse';
 import SideNavbar from './SideNavbar';
 import Login from '../pages/Login';
+import Header from './Header';
 
 function App() {
-  const currentUser = useSelector((state) => state.user.name);
   return (
     <main>
       <Stack direction="horizontal">
         <SideNavbar />
         <Container className="page-section p-0" fluid>
-          <header className="d-flex justify-content-between bg-light">
-            <h1 className="fs-3">ELearningAcademy</h1>
-            {currentUser && (
-              <p>
-                Logged In as:
-                {currentUser}
-              </p>
-            )}
-          </header>
+          <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />

@@ -24,3 +24,28 @@ body {
 .login-form {
   max-width: 500px;
 }
+
+.page-header {
+  background-color: var(--primary-green);
+  color: #fff;
+}
+
+.hamburger-btn {
+  border: none;
+  background: none;
+  padding: 0.5rem;
+}
+
+.hamburger-btn__bar {
+  display: block;
+  width: 30px;
+  height: 6px;
+  border-radius: 9rem;
+  background-color: #fff;
+  transition: all 0.2s ease-in;
+}
+
+.hamburger-btn:hover .hamburger-btn__bar,
+.hamburger-btn:active .hamburger-btn__bar {
+  transform: scale(1.2);
+}
