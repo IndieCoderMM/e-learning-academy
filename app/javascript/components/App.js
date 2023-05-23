@@ -9,6 +9,7 @@ import NewCourse from '../pages/NewCourse';
 import DeleteCourse from '../pages/DeleteCourse';
 import SideNavbar from './SideNavbar';
 import Login from '../pages/Login';
+import Detail from '../pages/Details'
 
 function App() {
   const currentUser = useSelector((state) => state.user.name);
@@ -30,6 +31,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/new_course" element={<NewCourse />} />
+            <Route path="/courses/:id" element={<Detail />} />
             <Route path="/reservation" element={<Reservation />} />
             <Route path="/delete_course" element={<DeleteCourse />} />
           </Routes>

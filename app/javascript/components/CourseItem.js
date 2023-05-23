@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom"
 import PropTypes from 'prop-types';
 import {
   FaGraduationCap,
@@ -9,7 +10,9 @@ import {
 const CourseItem = ({ course }) => (
   <div key={course.id} className="single-course">
     <img src={course.img_url} alt={course.title} className="d-block w-50 h-50" style={{ height: '100 px' }} />
-    <h3 className="reserved-item__title">{course.title}</h3>
+    <Link to={`/courses/${course.id}`} className="reserved-item__title">
+      {course.title}
+    </Link>
     <p>{course.description}</p>
     <div className="course-details">
       <div className="course-info">
