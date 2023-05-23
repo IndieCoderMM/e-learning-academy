@@ -7,8 +7,10 @@ Rails.application.routes.draw do
 
   get '/users/:user_id/reservations', to: 'reservations#index'
   
-  get '/items/:id', to: 'items#show'
-  
+  namespace :api do
+    resources :courses
+  end
+
   # Catch-all route for unmatched routes
   get '*path', to: redirect('/')
 end
