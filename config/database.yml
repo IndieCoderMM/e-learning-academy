@@ -22,6 +22,8 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   # username: hellorails
   # password: hellorails
+  username: dev
+  password: root
 
 development:
   <<: *default
@@ -84,5 +86,5 @@ test:
 production:
   <<: *default
   database: e_learning_academy_production
-  username: e_learning_academy
-  password: <%= ENV["E_LEARNING_ACADEMY_DATABASE_PASSWORD"] %>
+  username: dev
+  password: root
