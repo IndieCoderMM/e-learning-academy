@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createNewReservation } from '../store/reservation';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+
 import { Alert } from 'react-bootstrap';
+import { createNewReservation } from '../store/reservation';
 
 function NewReservation() {
   const currentUser = useSelector((state) => state.user);
@@ -25,16 +25,16 @@ function NewReservation() {
       city: cityRef.current.value,
       date: dateRef.current.value,
     };
-    console.log(data);
+
     dispatch(createNewReservation(data));
   };
 
   useEffect(() => {
     if (reservationState.status === 'created') navigate('/reservation');
-    else if (reservationState.status === 'failed')
+    else if (reservationState.status === 'failed') {
       setAlert(reservationState.error);
-    else setAlert('');
-  }, [reservationState]);
+    } else setAlert('');
+  }, [reservationState, navigate]);
 
   return (
     <section className="page reserve-form-page">
@@ -49,47 +49,58 @@ function NewReservation() {
 
       <form onSubmit={handleSubmit} className="reserve-form">
         <div className="reserve-form__field">
-          <label>Username</label>
-          <input
-            type="text"
-            value={currentUser.name}
-            className="reserve-form__input"
-            readOnly
-          />
+          <label htmlFor="username">
+            Username
+            <input
+              id="username"
+              type="text"
+              value={currentUser.name}
+              className="reserve-form__input"
+              readOnly
+            />
+          </label>
         </div>
         <div className="reserve-form__field">
-          <label>Course</label>
-          <select
-            id="course-select"
-            className="reserve-form__input"
-            ref={courseRef}
-          >
-            {courses.map((course) => (
-              <option key={course.id} value={course.id} className="text-dark">
-                {course.title}
-              </option>
-            ))}
-          </select>
+          <label htmlFor="course-select">
+            Course
+            <select
+              id="course-select"
+              className="reserve-form__input"
+              ref={courseRef}
+            >
+              {courses.map((course) => (
+                <option key={course.id} value={course.id} className="text-dark">
+                  {course.title}
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
         <div className="reserve-form__field">
-          <label>City</label>
-          <input
-            type="text"
-            ref={cityRef}
-            className="reserve-form__input"
-            placeholder="Enter City"
-            required
-          />
+          <label htmlFor="city">
+            City
+            <input
+              id="city"
+              type="text"
+              ref={cityRef}
+              className="reserve-form__input"
+              placeholder="Enter City"
+              required
+            />
+          </label>
         </div>
         <div className="reserve-form__field">
-          <label>Date</label>
-          <input
-            type="date"
-            ref={dateRef}
-            className="reserve-form__input"
-            placeholder="Select Date"
-            required
-          />
+          <label htmlFor="date">
+            Date
+            <input
+              id="date"
+              type="date"
+              ref={dateRef}
+              className="reserve-form__input"
+              placeholder="Select Date"
+              required
+            />
+          </label>
         </div>
         <div className="d-flex gap-2 justify-content-center w-100 mt-3">
           <button type="button" className="reserve-form__action">
@@ -102,10 +113,6 @@ function NewReservation() {
       </form>
     </section>
   );
-}
-
-{
-  /* <a href="https://www.flaticon.com/free-icons/dropdown-arrow" title="dropdown arrow icons">Dropdown arrow icons created by Arkinasi - Flaticon</a> */
 }
 
 export default NewReservation;

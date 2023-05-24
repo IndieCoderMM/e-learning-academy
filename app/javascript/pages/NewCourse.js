@@ -2,7 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Container, Form, Alert } from 'react-bootstrap';
+import {
+  Button, Container, Form, Alert,
+} from 'react-bootstrap';
 import { coursesActions } from '../store/coursesSlice';
 
 const NewCourse = ({ createCourse }) => {

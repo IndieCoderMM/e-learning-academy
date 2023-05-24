@@ -6,7 +6,6 @@ import CustomCarousel from '../components/CustomCarousel';
 import ReservationAlert from '../components/ReservationAlert';
 
 function Reservation() {
-  const reservationStatus = useSelector((state) => state.reservations.status);
   const reservationData = useSelector((state) => state.reservations.data);
   const currentUser = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -44,7 +43,11 @@ function Reservation() {
       {reservedItems.length > 0 && currentUser.id != null ? (
         <div>
           <p className="fs-5 text-muted">
-            You have enrolled to <b>{reservedItems.length}</b> courses.
+            You have enrolled to
+            {' '}
+            <b>{reservedItems.length}</b>
+            {' '}
+            courses.
           </p>
           <CustomCarousel items={reservedItems} />
         </div>
