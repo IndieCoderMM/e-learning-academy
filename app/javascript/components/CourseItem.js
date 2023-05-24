@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FaGraduationCap, FaClock, FaMoneyBillAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 
 const CourseItem = ({ course }) => (
   <div key={course.id} className="course-card">

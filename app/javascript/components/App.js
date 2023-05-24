@@ -14,7 +14,6 @@ import Detail from '../pages/Details';
 
 import Header from './Header';
 
-
 function App() {
   const [openNav, setOpenNav] = useState(true);
 
