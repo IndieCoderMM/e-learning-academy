@@ -6,6 +6,11 @@ const initialState = {
   courses: [], loading: false,
 };
 
+const getCSRFToken = () => {
+  const csrfTag = document.querySelector('meta[name=csrf-token]');
+  return csrfTag ? csrfTag.content : '';
+};
+
 const FETCHED_COURSES = 'courses/fetchCourses';
 const CREATED_COURSE = 'courses/createCourse';
 const apiEndpoint = '/api/courses';
@@ -26,7 +31,7 @@ export const createCourse = createAsyncThunk(
   CREATED_COURSE,
   async (courseData) => {
     try {
-      const response = await axios.post(apiEndpoint, courseData);
+      const response = await axios.post(apiEndpoint, courseData, { headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': getCSRFToken() } });
       return response.data;
     } catch (error) {
       throw Error('Error creating course');
