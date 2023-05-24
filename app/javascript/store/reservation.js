@@ -31,14 +31,11 @@ export const createNewReservation = createAsyncThunk(
       body: JSON.stringify(formData),
     });
 
-    console.log('formdata', formData);
-
     const data = await res.json();
 
     if (!res.ok) {
       throw new Error(data.message);
     }
-    console.log(data);
     return data;
   },
 );
@@ -60,7 +57,7 @@ const reservationSlice = createSlice({
       }))
       .addCase(createNewReservation.rejected, (state, action) => ({
         ...state,
-        status: 'error',
+        status: 'failed',
         error: action.error.message,
       }))
       .addCase(getUserReservations.pending, (state) => ({

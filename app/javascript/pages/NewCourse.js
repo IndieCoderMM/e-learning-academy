@@ -1,10 +1,8 @@
 /* eslint-disable camelcase */
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { connect, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  Button, Container, Form, Alert,
-} from 'react-bootstrap';
+import { Button, Container, Form, Alert } from 'react-bootstrap';
 import { coursesActions } from '../store/coursesSlice';
 
 const NewCourse = ({ createCourse }) => {
@@ -15,6 +13,7 @@ const NewCourse = ({ createCourse }) => {
   const [duration, setDuration] = useState('');
   const [img_url, setImgUrl] = useState('');
   const [message, setMessage] = useState('');
+  const errorMessage = useSelector((state) => state.courses.error);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,27 +27,29 @@ const NewCourse = ({ createCourse }) => {
       img_url,
     };
 
-    createCourse(newCourse)
-      .then(() => {
-        setMessage('Course created successfully!');
-        setTitle('');
-        setInstructor('');
-        setDescription('');
-        setPrice('');
-        setDuration('');
-        setImgUrl('');
-      })
-      .catch((error) => {
-        setMessage(`Course creation failed: ${error.message}`);
-      });
+    createCourse(newCourse);
+
+    setMessage('Course created successfully!');
   };
 
+  useEffect(() => {
+    if (errorMessage) setMessage(errorMessage);
+  }, [errorMessage]);
+
   return (
-    <Container className="d-flex flex-column justify-content-center align-items-center gap-2 p-3 new-course-form-container" fluid>
+    <Container
+      className="d-flex flex-column justify-content-center align-items-center gap-2 p-3 new-course-form-container"
+      fluid
+    >
       <h1>Add New Course</h1>
 
-      <Form onSubmit={handleSubmit} className="d-flex flex-column p-3 text-dark bg-white rounded w-50 h-50">
-        {message && <Alert variant={message.includes('failed') ? 'danger' : 'success'}>{message}</Alert>}
+      <Form
+        onSubmit={handleSubmit}
+        className="d-flex flex-column p-3 text-dark bg-white rounded w-50 h-50"
+      >
+        {message && (
+          <Alert variant={errorMessage ? 'danger' : 'success'}>{message}</Alert>
+        )}
         <Form.Label>
           Title:
           <Form.Control
@@ -127,4 +128,6 @@ NewCourse.propTypes = {
   createCourse: PropTypes.func.isRequired,
 };
 
-export default connect(null, { createCourse: coursesActions.createCourse })(NewCourse);
+export default connect(null, { createCourse: coursesActions.createCourse })(
+  NewCourse,
+);

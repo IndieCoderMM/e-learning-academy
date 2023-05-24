@@ -1,13 +1,15 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createNewReservation } from '../store/reservation';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Alert } from 'react-bootstrap';
 
 function NewReservation() {
   const currentUser = useSelector((state) => state.user);
   const courses = useSelector((state) => state.courses.courses);
-  const reservationStatus = useSelector((state) => state.reservations.status);
+  const [alert, setAlert] = useState('');
+  const reservationState = useSelector((state) => state.reservations);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const courseRef = useRef();
@@ -28,12 +30,23 @@ function NewReservation() {
   };
 
   useEffect(() => {
-    if (reservationStatus === 'created') navigate('/reservation');
-  }, [reservationStatus]);
+    if (reservationState.status === 'created') navigate('/reservation');
+    else if (reservationState.status === 'failed')
+      setAlert(reservationState.error);
+    else setAlert('');
+  }, [reservationState]);
 
   return (
     <section className="page reserve-form-page">
       <h2 className="page__title">Create a new reservation</h2>
+      {currentUser.id == null && (
+        <Alert variant="primary">
+          Please log in to create a new reservation.
+        </Alert>
+      )}
+
+      {alert !== '' && <Alert variant="danger">{alert}</Alert>}
+
       <form onSubmit={handleSubmit} className="reserve-form">
         <div className="reserve-form__field">
           <label>Username</label>
