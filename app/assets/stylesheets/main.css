@@ -27,6 +27,10 @@ body {
   color: #fff;
 }
 
+.brand-logo {
+  font-size: 1.5rem;
+}
+
 .page {
   background-color: #fff;
   text-align: center;
@@ -72,5 +76,5 @@ body {
 
 .hamburger-btn:hover .hamburger-btn__bar,
 .hamburger-btn:active .hamburger-btn__bar {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }

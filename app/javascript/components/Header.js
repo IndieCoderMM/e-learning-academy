@@ -11,7 +11,8 @@ import { BiLogInCircle } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOutUser } from '../store/user';
-const Header = () => {
+
+const Header = ({ openNav, toggleNav }) => {
   const currentUser = useSelector((state) => state.user.name);
   const dispatch = useDispatch();
 
@@ -24,12 +25,13 @@ const Header = () => {
       <div className="d-flex align-items-center gap-1">
         <button
           type="button"
+          onClick={toggleNav}
           className="d-flex flex-column justify-content-center gap-2 hamburger-btn"
         >
           <span className="hamburger-btn__bar"></span>
           <span className="hamburger-btn__bar"></span>
         </button>
-        <h1 className="brand-logo">ELearningAcademy</h1>
+        {!openNav && <h1 className="brand-logo">ELearningAcademy</h1>}
       </div>
       {currentUser ? (
         <div className="d-flex align-items-center gap-1">

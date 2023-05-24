@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 import { TfiGithub, TfiLinkedin } from 'react-icons/tfi';
 
-const SideNavbar = () => {
+const SideNavbar = ({ show }) => {
   return (
-    <section className="sidebar">
+    <section className="sidebar" style={show ? {} : { display: 'none' }}>
       <h2 className="sidebar__brand">ClassGo</h2>
       <div className="sidebar__nav">
         <NavLink className="sidebar__navlink" to="/">
@@ -16,6 +16,9 @@ const SideNavbar = () => {
         </NavLink>
         <NavLink className="sidebar__navlink" to="/new_course">
           New Course
+        </NavLink>
+        <NavLink className="sidebar__navlink" to="/new_reservation">
+          New Reservation
         </NavLink>
         <NavLink className="sidebar__navlink" to="/delete_course">
           Delete Course
