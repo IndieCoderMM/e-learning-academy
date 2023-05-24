@@ -1,5 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
+const getCSRFToken = () => {
+  const csrfTag = document.querySelector('meta[name=csrf-token]');
+  return csrfTag ? csrfTag.content : '';
+};
+
 export const getUserReservations = createAsyncThunk(
   'reservations/getUserReservations',
   async (userId) => {
@@ -10,6 +15,30 @@ export const getUserReservations = createAsyncThunk(
       throw new Error(data.message);
     }
 
+    return data;
+  },
+);
+
+export const createNewReservation = createAsyncThunk(
+  'reservations/createNewReservation',
+  async (formData) => {
+    const res = await fetch(`/api/users/${formData.user_id}/reservations`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': getCSRFToken(),
+      },
+      body: JSON.stringify(formData),
+    });
+
+    console.log('formdata', formData);
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message);
+    }
+    console.log(data);
     return data;
   },
 );
@@ -25,6 +54,15 @@ const reservationSlice = createSlice({
   initialState,
   extraReducers(builder) {
     builder
+      .addCase(createNewReservation.fulfilled, (state) => ({
+        ...state,
+        status: 'created',
+      }))
+      .addCase(createNewReservation.rejected, (state, action) => ({
+        ...state,
+        status: 'error',
+        error: action.error.message,
+      }))
       .addCase(getUserReservations.pending, (state) => ({
         ...state,
         status: 'loading',

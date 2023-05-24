@@ -1,9 +1,15 @@
 import React, { useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { createNewReservation } from '../store/reservation';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function NewReservation() {
   const currentUser = useSelector((state) => state.user);
   const courses = useSelector((state) => state.courses.courses);
+  const reservationStatus = useSelector((state) => state.reservations.status);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const courseRef = useRef();
   const cityRef = useRef();
   const dateRef = useRef();
@@ -18,7 +24,12 @@ function NewReservation() {
       date: dateRef.current.value,
     };
     console.log(data);
+    dispatch(createNewReservation(data));
   };
+
+  useEffect(() => {
+    if (reservationStatus === 'created') navigate('/reservation');
+  }, [reservationStatus]);
 
   return (
     <section className="page reserve-form-page">
