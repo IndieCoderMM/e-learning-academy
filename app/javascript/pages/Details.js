@@ -36,17 +36,6 @@ const Details = () => {
 };
 
 Details.propTypes = {
-  courses: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      img_url: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      instructor: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      duration: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
 };
 
 export default Details;
