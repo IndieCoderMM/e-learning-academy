@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Container, Form } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser, registerUser } from '../store/user';
@@ -38,12 +39,8 @@ function Login() {
   }, [userData, navigate]);
 
   return (
-    <Container
-      className="d-flex flex-column justify-content-center align-items-center gap-3 login-page"
-      style={{ height: '100vh' }}
-      fluid
-    >
-      <h2>
+    <section className="page login-page">
+      <h2 className="page__title">
         {mode === 'login' ? 'Log In To Existing Account' : 'Register New User'}
       </h2>
       {userData.status === 'error' && (
@@ -70,7 +67,7 @@ function Login() {
             : 'Already have an account? Log in here'}
         </Button>
       </Form>
-    </Container>
+    </section>
   );
 }
 

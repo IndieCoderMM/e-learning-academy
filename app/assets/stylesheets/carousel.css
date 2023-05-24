@@ -1,5 +1,6 @@
 .carousel-container {
   display: flex;
+  gap: 0.25rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -7,6 +8,7 @@
 .carousel {
   flex: 1;
   display: flex;
+  gap: 1rem;
   overflow: auto;
   scroll-snap-type: x mandatory;
   padding: 0;
@@ -23,6 +25,8 @@
 .carousel__item {
   width: 33%;
   flex-shrink: 0;
+  border-radius: 4px;
+  border: solid 1px #ccc5;
 }
 
 .carousel__control {
@@ -83,4 +87,14 @@
 .pagination-btn.active {
   background-color: var(--primary-green);
   transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .carousel__item {
+    width: 100%;
+  }
+
+  .carousel__control {
+    width: 50px;
+  }
 }
