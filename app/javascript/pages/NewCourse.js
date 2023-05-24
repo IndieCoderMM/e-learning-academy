@@ -2,8 +2,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Container, Form } from 'react-bootstrap';
-import { createCourse } from '../store/coursesSlice';
+import {
+  Button, Container, Form, Alert,
+} from 'react-bootstrap';
+import { coursesActions } from '../store/coursesSlice';
 
 const NewCourse = ({ createCourse }) => {
   const [title, setTitle] = useState('');
@@ -12,6 +14,7 @@ const NewCourse = ({ createCourse }) => {
   const [price, setPrice] = useState('');
   const [duration, setDuration] = useState('');
   const [img_url, setImgUrl] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,14 +28,19 @@ const NewCourse = ({ createCourse }) => {
       img_url,
     };
 
-    createCourse(newCourse);
-
-    setTitle('');
-    setInstructor('');
-    setDescription('');
-    setPrice('');
-    setDuration('');
-    setImgUrl('');
+    createCourse(newCourse)
+      .then(() => {
+        setMessage('Course created successfully!');
+        setTitle('');
+        setInstructor('');
+        setDescription('');
+        setPrice('');
+        setDuration('');
+        setImgUrl('');
+      })
+      .catch((error) => {
+        setMessage(`Course creation failed: ${error.message}`);
+      });
   };
 
   return (
@@ -40,6 +48,7 @@ const NewCourse = ({ createCourse }) => {
       <h1>Add New Course</h1>
 
       <Form onSubmit={handleSubmit} className="d-flex flex-column p-3 text-dark bg-white rounded w-50 h-50">
+        {message && <Alert variant={message.includes('failed') ? 'danger' : 'success'}>{message}</Alert>}
         <Form.Label>
           Title:
           <Form.Control
@@ -115,14 +124,7 @@ const NewCourse = ({ createCourse }) => {
 };
 
 NewCourse.propTypes = {
-  createCourse: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    img_url: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    instructor: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    duration: PropTypes.number.isRequired,
-  }).isRequired,
+  createCourse: PropTypes.func.isRequired,
 };
 
-export default connect(null, { createCourse })(NewCourse);
+export default connect(null, { createCourse: coursesActions.createCourse })(NewCourse);
