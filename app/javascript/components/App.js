@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Stack from 'react-bootstrap/Stack';
-import { Container } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
 import Home from '../pages/Home';
 import Reservation from '../pages/Reservation';
 import NewCourse from '../pages/NewCourse';
 import DeleteCourse from '../pages/DeleteCourse';
+import NewReservation from '../pages/NewReservation';
 import SideNavbar from './SideNavbar';
 import Login from '../pages/Login';
 import Header from './Header';
-import NewReservation from '../pages/NewReservation';
 
 function App() {
   const [openNav, setOpenNav] = useState(true);

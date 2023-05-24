@@ -1,11 +1,6 @@
-import React, { useState } from 'react';
-import {
-  Button,
-  ButtonGroup,
-  Dropdown,
-  Nav,
-  NavDropdown,
-} from 'react-bootstrap';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Button, ButtonGroup, Dropdown } from 'react-bootstrap';
 import { FaUserCircle } from 'react-icons/fa';
 import { BiLogInCircle } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
@@ -28,8 +23,8 @@ const Header = ({ openNav, toggleNav }) => {
           onClick={toggleNav}
           className="d-flex flex-column justify-content-center gap-2 hamburger-btn"
         >
-          <span className="hamburger-btn__bar"></span>
-          <span className="hamburger-btn__bar"></span>
+          <span className="hamburger-btn__bar" />
+          <span className="hamburger-btn__bar" />
         </button>
         {!openNav && <h1 className="brand-logo">ELearningAcademy</h1>}
       </div>
@@ -58,6 +53,11 @@ const Header = ({ openNav, toggleNav }) => {
       )}
     </header>
   );
+};
+
+Header.propTypes = {
+  openNav: PropTypes.bool.isRequired,
+  toggleNav: PropTypes.func.isRequired,
 };
 
 export default Header;

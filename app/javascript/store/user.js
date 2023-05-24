@@ -59,7 +59,9 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     logOutUser(state) {
-      return { ...state, status: 'idle', name: '', id: null };
+      return {
+        ...state, status: 'idle', name: '', id: null,
+      };
     },
   },
   extraReducers(builder) {
@@ -91,4 +93,3 @@ const userSlice = createSlice({
 
 export const { logOutUser } = userSlice.actions;
 export default userSlice.reducer;
-

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaGraduationCap, FaClock, FaMoneyBillAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const CourseItem = ({ course }) => (
   <div key={course.id} className="course-card">
@@ -11,21 +12,31 @@ const CourseItem = ({ course }) => (
         className="course-card__img"
       />
     </div>
-    <h3 className="course-card__title">{course.title}</h3>
+    <Link to={`/courses/${course.id}`} className="course-card__title">
+      {course.title}
+    </Link>
     <hr className="course-card__hr" />
     <p>{course.description}</p>
     <div className="course-card__details">
       <div>
         <span className="course-card__icon">
-          <FaMoneyBillAlt />{' '}
+          <FaMoneyBillAlt />
+          {' '}
         </span>
-        <p>${course.price}</p>
+        <p>
+          $
+          {course.price}
+        </p>
       </div>
       <div>
         <span className="course-card__icon">
           <FaClock />
         </span>
-        <p>{course.duration} minutes</p>
+        <p>
+          {course.duration}
+          {' '}
+          minutes
+        </p>
       </div>
       <div>
         <span className="course-card__icon">
