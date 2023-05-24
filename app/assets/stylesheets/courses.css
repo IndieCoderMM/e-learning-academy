@@ -47,6 +47,14 @@
   object-fit: cover;
 }
 
+.course-info,
+.new-course-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .course-card__icon {
   width: 2rem;
   height: 2rem;
@@ -64,4 +72,11 @@
   margin: 0;
   border: none;
   background-color: #ccc;
+}
+
+.new-course-form-container {
+  gap: 0.8rem;
+  padding: 0.5rem;
+  background-color: var(--primary-green);
+  color: #fff;
 }

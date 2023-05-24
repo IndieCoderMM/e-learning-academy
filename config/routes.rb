@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/users/:user_id/reservations', to: 'reservations#index'
   
   namespace :api do
-    resources :courses
+    resources :courses, only: [:index, :create]
   end
   # Catch-all route for unmatched routes
   get '*path', to: redirect('/')
