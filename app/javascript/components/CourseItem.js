@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FaGraduationCap, FaClock, FaMoneyBillAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 
 const CourseItem = ({ course }) => (
   <div key={course.id} className="course-card">
@@ -16,6 +16,7 @@ const CourseItem = ({ course }) => (
       {course.title}
     </Link>
     <hr className="course-card__hr" />
+
     <p>{course.description}</p>
     <div className="course-card__details">
       <div>

@@ -9,6 +9,9 @@ import DeleteCourse from '../pages/DeleteCourse';
 import NewReservation from '../pages/NewReservation';
 import SideNavbar from './SideNavbar';
 import Login from '../pages/Login';
+
+import Detail from '../pages/Details';
+
 import Header from './Header';
 
 function App() {
@@ -28,6 +31,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/new_course" element={<NewCourse />} />
+            <Route path="/courses/:id" element={<Detail />} />
             <Route path="/reservation" element={<Reservation />} />
             <Route path="/new_reservation" element={<NewReservation />} />
             <Route path="/delete_course" element={<DeleteCourse />} />
