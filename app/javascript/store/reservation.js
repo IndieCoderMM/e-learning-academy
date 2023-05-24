@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 export const getUserReservations = createAsyncThunk(
   'reservations/getUserReservations',
   async (userId) => {
-    const response = await fetch(`/users/${userId}/reservations`);
+    const response = await fetch(`/api/users/${userId}/reservations`);
     const data = await response.json();
 
     if (!response.ok) {
@@ -44,3 +44,4 @@ const reservationSlice = createSlice({
 });
 
 export default reservationSlice.reducer;
+
