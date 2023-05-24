@@ -1,14 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Tilt+Warp&display=swap');
+
+:root {
+  --primary-green: #96bf01;
+  --title-font: 'Tilt Warp', cursive;
+  --primary-font: 'Roboto', sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
 }
 
-:root {
-  --primary-green: #96bf01;
-}
-
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--primary-font);
+  font-size: 18px;
 }
 
 .main-content {
@@ -30,8 +35,10 @@ body {
 }
 
 .page__title {
+  font-family: var(--title-font);
+  font-size: 1.8rem;
   text-transform: uppercase;
-  font-weight: 700;
+  letter-spacing: 0.01em;
   margin-bottom: 2rem;
 }
 
