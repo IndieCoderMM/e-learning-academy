@@ -9,7 +9,7 @@ import NewCourse from '../pages/NewCourse';
 import DeleteCourse from '../pages/DeleteCourse';
 import SideNavbar from './SideNavbar';
 import Login from '../pages/Login';
-import Detail from '../pages/Details'
+import Detail from '../pages/Details';
 
 function App() {
   const currentUser = useSelector((state) => state.user.name);
