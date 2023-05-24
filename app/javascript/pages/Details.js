@@ -35,7 +35,4 @@ const Details = () => {
   );
 };
 
-Details.propTypes = {
-};
-
 export default Details;
