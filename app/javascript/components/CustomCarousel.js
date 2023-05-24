@@ -17,7 +17,7 @@ const CustomCarousel = ({ items }) => {
 
   return (
     <Container className="p-0" fluid>
-      <div className="d-flex justify-content-center gap-1">
+      <div className="d-flex justify-content-center gap-1 mb-1">
         {pages.map((p, i) => (
           <button
             key={p}

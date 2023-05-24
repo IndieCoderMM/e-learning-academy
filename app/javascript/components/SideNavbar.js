@@ -2,11 +2,17 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 import { TfiGithub, TfiLinkedin } from 'react-icons/tfi';
+import { GrClose } from 'react-icons/gr';
 
-const SideNavbar = ({ show }) => {
+const SideNavbar = ({ show, toggleNav }) => {
   return (
     <section className="sidebar" style={show ? {} : { display: 'none' }}>
-      <h2 className="sidebar__brand">ClassGo</h2>
+      <header className="sidebar__header">
+        <h2 className="sidebar__brand">ClassGo</h2>
+        <button type="button" onClick={toggleNav} className="sidebar__close">
+          <GrClose />
+        </button>
+      </header>
       <div className="sidebar__nav">
         <NavLink className="sidebar__navlink" to="/">
           Home

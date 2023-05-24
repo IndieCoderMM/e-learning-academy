@@ -19,7 +19,7 @@ body {
 .main-content {
   background-color: #333;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .main-header {
@@ -40,7 +40,7 @@ body {
 
 .page__title {
   font-family: var(--title-font);
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   text-transform: uppercase;
   letter-spacing: 0.01em;
   margin-bottom: 2rem;

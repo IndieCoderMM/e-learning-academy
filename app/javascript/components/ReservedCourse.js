@@ -7,28 +7,32 @@ import {
 } from 'react-icons/fa';
 
 const ReservedCourse = ({ course, date, city }) => (
-  <div className="reserved-item">
-    <div>
-      <img src={course.img_url} className="d-block w-100" alt="course cover" />
+  <div className="course-card">
+    <div className="course-card__frame">
+      <img
+        src={course.img_url}
+        alt={course.title}
+        className="course-card__img"
+      />
     </div>
-    <h3 className="reserved-item__title">{course.title}</h3>
+    <h3 className="course-card__title">{course.title}</h3>
     <hr />
     <p>{course.description}</p>
-    <div className="reserved-item__meta">
+    <div className="course-card__details">
       <div>
-        <span className="reserved-item__icon">
+        <span className="course-card__icon">
           <FaGraduationCap />
         </span>
         <p>{course.instructor}</p>
       </div>
       <div>
-        <span className="reserved-item__icon">
+        <span className="course-card__icon">
           <FaMapMarkerAlt />
         </span>
         <p>{city}</p>
       </div>
       <div>
-        <span className="reserved-item__icon">
+        <span className="course-card__icon">
           <FaCalendarCheck />
         </span>
         <p>{date}</p>

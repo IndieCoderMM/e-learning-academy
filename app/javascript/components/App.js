@@ -21,7 +21,7 @@ function App() {
   return (
     <main>
       <Stack direction="horizontal">
-        <SideNavbar show={openNav} />
+        <SideNavbar show={openNav} toggleNav={toggleNav} />
         <Container className="p-0 main-content" fluid>
           <Header openNav={openNav} toggleNav={toggleNav} />
           <Routes>
