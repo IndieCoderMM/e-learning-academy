@@ -1,26 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Tilt+Warp&display=swap');
+
+:root {
+  --primary-green: #96bf01;
+  --title-font: 'Tilt Warp', cursive;
+  --primary-font: 'Roboto', sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
 }
 
-:root {
-  --primary-green: #96bf01;
-}
-
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--primary-font);
+  font-size: 18px;
 }
 
-.page-section {
-  background-color: aliceblue;
-  min-height: 100vh;
+.main-content {
+  background-color: #333;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.main-header {
+  background-color: var(--primary-green);
+  color: #fff;
+}
+
+.brand-logo {
+  font-size: 1.5rem;
+}
+
+.page {
+  background-color: #fff;
+  text-align: center;
+  padding: 0.5rem;
+  height: 100%;
+}
+
+.page__title {
+  font-family: var(--title-font);
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-bottom: 2rem;
 }
 
 .login-page {
   background-color: var(--primary-green);
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
 .login-form {
   max-width: 500px;
+}
+
+.hamburger-btn {
+  border: none;
+  background: none;
+  padding: 0.5rem;
+}
+
+.hamburger-btn__bar {
+  display: block;
+  width: 30px;
+  height: 6px;
+  border-radius: 9rem;
+  background-color: #fff;
+  transition: all 0.2s ease-in;
+}
+
+.hamburger-btn:hover .hamburger-btn__bar,
+.hamburger-btn:active .hamburger-btn__bar {
+  transform: scale(1.1);
 }

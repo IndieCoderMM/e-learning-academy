@@ -18,11 +18,7 @@ const Home = () => {
     coursesItems = [];
     courses.forEach((course) => {
       const item = {
-        element: (
-          <CourseItem
-            course={course}
-          />
-        ),
+        element: <CourseItem course={course} />,
         key: course.id,
       };
       coursesItems.push(item);
@@ -34,14 +30,14 @@ const Home = () => {
   }
 
   return (
-    <div className="courses-section">
-      <h1 className="all-courses">
+    <section className="page">
+      <h2 className="page__title">
         All available courses:
         {' '}
         <b>{coursesItems.length}</b>
-      </h1>
+      </h2>
       <CustomCarousel items={coursesItems} />
-    </div>
+    </section>
   );
 };
 
