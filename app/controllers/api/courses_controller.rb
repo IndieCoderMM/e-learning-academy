@@ -3,7 +3,7 @@ class Api::CoursesController < ApplicationController
     @courses = Course.all
     render json: @courses, status: :ok
   end
-
+  
   def create
     @course = Course.new(course_params)
     if @course.save
@@ -14,7 +14,14 @@ class Api::CoursesController < ApplicationController
   end
 
   private
+  
+  def show
+    # Retrieve the item details based on the provided item ID
+    item = Course.find(params[:id])
 
+    render json: item, status: :ok
+  end
+  
   def course_params
     params.require(:course).permit(:title, :description, :price, :duration, :instructor)
   end

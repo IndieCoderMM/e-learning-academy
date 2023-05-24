@@ -1,19 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  FaGraduationCap,
-  FaClock,
-  FaMoneyBillAlt,
-} from 'react-icons/fa';
+import { FaGraduationCap, FaClock, FaMoneyBillAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const CourseItem = ({ course }) => (
-  <div key={course.id} className="single-course">
-    <img src={course.img_url} alt={course.title} className="d-block w-100" style={{ height: '200px' }} />
-    <h3 className="reserved-item__title">{course.title}</h3>
+  <div key={course.id} className="course-card">
+    <div className="course-card__frame">
+      <img
+        src={course.img_url}
+        alt={course.title}
+        className="course-card__img"
+      />
+    </div>
+    <Link to={`/courses/${course.id}`} className="course-card__title">
+      {course.title}
+    </Link>
+    <hr className="course-card__hr" />
     <p>{course.description}</p>
-    <div className="course-details">
-      <div className="course-info">
-        <span className="reserved-item__icon">
+    <div className="course-card__details">
+      <div>
+        <span className="course-card__icon">
           <FaMoneyBillAlt />
           {' '}
         </span>
@@ -22,8 +28,8 @@ const CourseItem = ({ course }) => (
           {course.price}
         </p>
       </div>
-      <div className="course-info">
-        <span className="reserved-item__icon">
+      <div>
+        <span className="course-card__icon">
           <FaClock />
         </span>
         <p>
@@ -32,8 +38,8 @@ const CourseItem = ({ course }) => (
           minutes
         </p>
       </div>
-      <div className="course-info">
-        <span className="reserved-item__icon">
+      <div>
+        <span className="course-card__icon">
           <FaGraduationCap />
         </span>
         <p>{course.instructor}</p>

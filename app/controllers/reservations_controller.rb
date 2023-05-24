@@ -7,7 +7,8 @@ class ReservationsController < ApplicationController
         id: reservation.id,
         course: reservation.course,
         date: reservation.date,
-        city: reservation.city
+        city: reservation.city,
+        user_id: user.id
       }
     end
 
