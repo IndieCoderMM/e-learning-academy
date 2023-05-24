@@ -1,11 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-const Details = ({ courses }) => {
-  const { courseId } = useParams();
-
-  const Course = courses.find((c) => c.id === parseInt(courseId));
+const Details = () => {
+  const { id } = useParams();
+  const courses = useSelector((state) => state.courses.courses);
+  const Course = courses.find((c) => c.id === parseInt(id));
 
   if (!Course) {
     return <div>Course not found.</div>;
