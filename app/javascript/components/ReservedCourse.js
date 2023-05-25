@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteReservation, getUserReservations } from '../store/reservation';
 import Button from 'react-bootstrap/Button';
 import {
   FaGraduationCap,
@@ -11,15 +10,16 @@ import {
 } from 'react-icons/fa';
 import { SiCheckmarx } from 'react-icons/si';
 import { MdCancel } from 'react-icons/md';
+import { deleteReservation, getUserReservations } from '../store/reservation';
 
-const ReservedCourse = ({ id, course, date, city }) => {
+const ReservedCourse = ({
+  id, course, date, city,
+}) => {
   const userId = useSelector((state) => state.user.id);
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    dispatch(deleteReservation({ userId, id })).then(() =>
-      dispatch(getUserReservations(userId)),
-    );
+    dispatch(deleteReservation({ userId, id })).then(() => dispatch(getUserReservations(userId)));
   };
 
   return (
@@ -95,4 +95,3 @@ ReservedCourse.propTypes = {
 };
 
 export default ReservedCourse;
-

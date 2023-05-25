@@ -46,7 +46,7 @@ function Login() {
       <div className="styled-form-container">
         <h2 className="page__title">
           {mode === 'login'
-            ? 'Welcome Back to StudiCo'
+            ? 'Welcome Back to ClassUp'
             : 'Join Our Learning Community'}
         </h2>
         <p>
@@ -61,15 +61,17 @@ function Login() {
         )}
         <form onSubmit={handleSubmit} className="styled-form">
           <div className="styled-form__field">
-            <label>Username:</label>
-            <input
-              type="text"
-              value={username}
-              autoFocus
-              required
-              onChange={handleUsernameChange}
-              className="styled-form__input"
-            />
+            <label htmlFor="username">
+              Username:
+              <input
+                type="text"
+                value={username}
+                id="username"
+                required
+                onChange={handleUsernameChange}
+                className="styled-form__input"
+              />
+            </label>
           </div>
           <button className="styled-form__action w-50" type="submit">
             {mode === 'login' ? 'Log In' : 'Register'}
@@ -96,4 +98,3 @@ function Login() {
 }
 
 export default Login;
-

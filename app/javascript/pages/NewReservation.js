@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert';
 import { createNewReservation } from '../store/reservation';
 

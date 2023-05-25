@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getCSRFToken } from '../utils/getCSRFToken';
+import getCSRFToken from '../utils/getCSRFToken';
 
 export const loginUser = createAsyncThunk(
   'user/login',
@@ -92,4 +92,3 @@ const userSlice = createSlice({
 
 export const { logOutUser } = userSlice.actions;
 export default userSlice.reducer;
-

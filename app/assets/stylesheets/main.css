@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Tilt+Warp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500;700&family=Tilt+Warp&display=swap');
 
 :root {
   --primary-green: #96bf01;
@@ -29,7 +29,9 @@ body {
 }
 
 .brand-logo {
-  font-size: 1.5rem;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
 .page {

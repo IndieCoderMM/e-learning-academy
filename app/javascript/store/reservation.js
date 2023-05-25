@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getCSRFToken } from '../utils/getCSRFToken';
+import getCSRFToken from '../utils/getCSRFToken';
 
 export const getUserReservations = createAsyncThunk(
   'reservations/getUserReservations',

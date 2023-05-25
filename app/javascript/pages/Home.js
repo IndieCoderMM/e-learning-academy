@@ -34,7 +34,8 @@ const Home = () => {
       <h2 className="page__title">
         Explore Featured Courses&nbsp;
         <small>
-          (<b>{coursesItems.length}</b>
+          (
+          <b>{coursesItems.length}</b>
           &nbsp;Available)
         </small>
       </h2>
@@ -44,4 +45,3 @@ const Home = () => {
 };
 
 export default Home;
-
