@@ -5,6 +5,7 @@ import {
   FaMapMarkerAlt,
   FaCalendarCheck,
 } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const ReservedCourse = ({ course, date, city }) => (
   <div className="course-card">
@@ -15,7 +16,9 @@ const ReservedCourse = ({ course, date, city }) => (
         className="course-card__img"
       />
     </div>
-    <h3 className="course-card__title">{course.title}</h3>
+    <Link to={`/courses/${course.id}`} className="course-card__title">
+      {course.title}
+    </Link>
     <hr />
     <p>{course.description}</p>
     <div className="course-card__details">
@@ -54,3 +57,4 @@ ReservedCourse.propTypes = {
 };
 
 export default ReservedCourse;
+

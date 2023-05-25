@@ -1,8 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
-import { Alert } from 'react-bootstrap';
+import Alert from 'react-bootstrap/Alert';
 import { createNewReservation } from '../store/reservation';
 
 function NewReservation() {
@@ -37,80 +36,87 @@ function NewReservation() {
   }, [reservationState, navigate]);
 
   return (
-    <section className="page reserve-form-page">
-      <h2 className="page__title">Create a new reservation</h2>
-      {currentUser.id == null && (
-        <Alert variant="primary">
-          Please log in to create a new reservation.
-        </Alert>
-      )}
+    <section className="page form-page">
+      <div className="styled-form-container">
+        <h2 className="page__title">Create a new reservation</h2>
+        {currentUser.id == null && (
+          <Alert variant="primary">
+            Please log in to create a new reservation.
+          </Alert>
+        )}
 
-      {alert !== '' && <Alert variant="danger">{alert}</Alert>}
+        {alert !== '' && <Alert variant="danger">{alert}</Alert>}
 
-      <form onSubmit={handleSubmit} className="reserve-form">
-        <div className="reserve-form__field">
-          <label htmlFor="username">
-            Username
-            <input
-              id="username"
-              type="text"
-              value={currentUser.name}
-              className="reserve-form__input"
-              readOnly
-            />
-          </label>
-        </div>
-        <div className="reserve-form__field">
-          <label htmlFor="course-select">
-            Course
-            <select
-              id="course-select"
-              className="reserve-form__input"
-              ref={courseRef}
-            >
-              {courses.map((course) => (
-                <option key={course.id} value={course.id} className="text-dark">
-                  {course.title}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-        <div className="reserve-form__field">
-          <label htmlFor="city">
-            City
-            <input
-              id="city"
-              type="text"
-              ref={cityRef}
-              className="reserve-form__input"
-              placeholder="Enter City"
-              required
-            />
-          </label>
-        </div>
-        <div className="reserve-form__field">
-          <label htmlFor="date">
-            Date
-            <input
-              id="date"
-              type="date"
-              ref={dateRef}
-              className="reserve-form__input"
-              placeholder="Select Date"
-              required
-            />
-          </label>
-        </div>
-        <div className="d-flex gap-2 justify-content-center w-100 mt-3">
-          <button type="button" className="reserve-form__action">
-            Cancel
-          </button>
-          <button type="submit" className="reserve-form__action">
-            Create
-          </button>
-        </div>
-      </form>
+        <form onSubmit={handleSubmit} className="styled-form">
+          <div className="styled-form__field">
+            <label htmlFor="username">
+              Username
+              <input
+                id="username"
+                type="text"
+                value={currentUser.name}
+                placeholder="Log in to fill this field"
+                className="styled-form__input"
+                readOnly
+              />
+            </label>
+          </div>
+          <div className="styled-form__field">
+            <label htmlFor="course-select">
+              Course
+              <select
+                id="course-select"
+                className="styled-form__input"
+                ref={courseRef}
+              >
+                {courses.map((course) => (
+                  <option
+                    key={course.id}
+                    value={course.id}
+                    className="text-dark"
+                  >
+                    {course.title}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+          <div className="styled-form__field">
+            <label htmlFor="city">
+              City
+              <input
+                id="city"
+                type="text"
+                ref={cityRef}
+                className="styled-form__input"
+                placeholder="Enter City"
+                required
+              />
+            </label>
+          </div>
+          <div className="styled-form__field">
+            <label htmlFor="date">
+              Date
+              <input
+                id="date"
+                type="date"
+                ref={dateRef}
+                className="styled-form__input"
+                placeholder="Select Date"
+                required
+              />
+            </label>
+          </div>
+          <div className="d-flex gap-2 justify-content-center w-100 mt-3">
+            <button type="button" className="styled-form__action">
+              Cancel
+            </button>
+            <button type="submit" className="styled-form__action">
+              Create
+            </button>
+          </div>
+        </form>
+      </div>
     </section>
   );
 }
