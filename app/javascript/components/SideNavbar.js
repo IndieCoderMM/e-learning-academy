@@ -8,7 +8,7 @@ import { GrClose } from 'react-icons/gr';
 const SideNavbar = ({ show, toggleNav }) => (
   <section className="sidebar" style={show ? {} : { display: 'none' }}>
     <header className="sidebar__header">
-      <h2 className="sidebar__brand">ClassGo</h2>
+      <h1 className="sidebar__brand brand-logo">ClassUp</h1>
       <button type="button" onClick={toggleNav} className="sidebar__close">
         <GrClose />
       </button>
@@ -64,7 +64,7 @@ const SideNavbar = ({ show, toggleNav }) => (
           <TfiGithub />
         </a>
       </div>
-      <p>&copy; 2023 elearningacademy.com </p>
+      <p>&copy; 2023 ClassUp - eLearningAcademy</p>
     </footer>
   </section>
 );

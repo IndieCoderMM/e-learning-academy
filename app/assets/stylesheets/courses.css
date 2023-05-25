@@ -5,6 +5,7 @@
   text-align: center;
   padding: 1rem;
   gap: 0.8rem;
+  height: 100%;
 }
 
 .course-card__title {
@@ -15,7 +16,6 @@
 }
 
 .course-card__details {
-  flex: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
@@ -69,7 +69,7 @@
 .course-card__hr {
   width: 80%;
   height: 1px;
-  margin: 0;
+  margin: auto 0 0;
   border: none;
   background-color: #ccc;
 }

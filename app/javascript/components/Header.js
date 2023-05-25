@@ -26,7 +26,7 @@ const Header = ({ openNav, toggleNav }) => {
           <span className="hamburger-btn__bar" />
           <span className="hamburger-btn__bar" />
         </button>
-        {!openNav && <h1 className="brand-logo">ELearningAcademy</h1>}
+        {!openNav && <h1 className="brand-logo">ClassUp</h1>}
       </div>
       {currentUser ? (
         <div className="d-flex align-items-center gap-1">

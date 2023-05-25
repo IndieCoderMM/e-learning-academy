@@ -6,8 +6,7 @@ import CustomCarousel from '../components/CustomCarousel';
 import ReservationAlert from '../components/ReservationAlert';
 
 function Reservation() {
-  const reservationStatus = useSelector((state) => state.reservations.status);
-  const reservationData = useSelector((state) => state.reservations.data);
+  const reservationState = useSelector((state) => state.reservations);
   const currentUser = useSelector((state) => state.user);
   const dispatch = useDispatch();
   let reservedItems = [];
@@ -15,23 +14,18 @@ function Reservation() {
   // Getting reserved courses from backend
   useEffect(() => {
     if (currentUser.id != null) {
-      if (
-        reservationStatus === 'idle'
-        || (reservationData.length > 0
-          && reservationData[0].user_id !== currentUser.id)
-      ) {
-        dispatch(getUserReservations(currentUser.id));
-      }
+      dispatch(getUserReservations(currentUser.id));
     }
-  }, [reservationStatus, currentUser.id, dispatch, reservationData]);
+  }, [currentUser, dispatch]);
 
   // Loading array of elements
-  if (reservationData.length) {
+  if (reservationState.data.length) {
     reservedItems = [];
-    reservationData.forEach((reservation) => {
+    reservationState.data.forEach((reservation) => {
       const item = {
         element: (
           <ReservedCourse
+            id={reservation.id}
             course={reservation.course}
             date={reservation.date}
             city={reservation.city}
@@ -45,16 +39,17 @@ function Reservation() {
 
   return (
     <section className="page">
-      <h2 className="page__title">Enrolled Courses</h2>
+      <h2 className="page__title">Scheduled Classes</h2>
       <ReservationAlert />
       {reservedItems.length > 0 && currentUser.id != null ? (
         <div>
           <p className="fs-5 text-muted">
-            You have enrolled to
+            You currently have
             {' '}
             <b>{reservedItems.length}</b>
             {' '}
-            courses.
+            study sessions
+            scheduled.
           </p>
           <CustomCarousel items={reservedItems} />
         </div>

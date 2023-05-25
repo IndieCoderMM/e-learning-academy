@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Tilt+Warp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500;700&family=Tilt+Warp&display=swap');
 
 :root {
   --primary-green: #96bf01;
+  --primary-transparent: #96bf01df;
   --title-font: 'Tilt Warp', cursive;
   --primary-font: 'Roboto', sans-serif;
 }
@@ -17,7 +18,7 @@ body {
 }
 
 .main-content {
-  background-color: #333;
+  background-color: #fff;
   height: 100vh;
   overflow-x: hidden;
 }
@@ -28,7 +29,9 @@ body {
 }
 
 .brand-logo {
-  font-size: 1.5rem;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
 .page {
@@ -43,16 +46,15 @@ body {
   font-size: 1.7rem;
   text-transform: uppercase;
   letter-spacing: 0.01em;
-  margin-bottom: 2rem;
+  margin: 1rem 0 2rem;
 }
 
-.login-page {
-  background-color: var(--primary-green);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
+.form-page {
+  padding: 0;
+  background-image: url('assets/bg-landscape.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .login-form {
@@ -77,4 +79,10 @@ body {
 .hamburger-btn:hover .hamburger-btn__bar,
 .hamburger-btn:active .hamburger-btn__bar {
   transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .form-page {
+    background-image: url('assets/bg-portrait.jpg');
+  }
 }
