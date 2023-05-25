@@ -1,35 +1,46 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useParams, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 
 const Details = () => {
   const { id } = useParams();
+  // const history = useHistory();
   const courses = useSelector((state) => state.courses.courses);
-  const Course = courses.find((c) => c.id === parseInt(id, 10));
+  const course = courses.find((c) => c.id === parseInt(id, 10));
+  const dispatch = useDispatch();
 
-  if (!Course) {
+  const handleDelete = () => {
+    axios
+      .delete(`/api/courses/${id}`)
+      .then(() => {
+        dispatch({ type: 'DELETE_COURSE', payload: id }); // Update Redux state by dispatching the action manually
+        // history.push('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  if (!course) {
     return <div>Course not found.</div>;
   }
 
   return (
     <div className="course-detail">
-      <h2>{Course.title}</h2>
-      <img src={Course.img_url} alt={Course.title} className="course-detail__image" />
-      <p>{Course.description}</p>
+      <h2>{course.title}</h2>
+      <img src={course.img_url} alt={course.title} className="course-detail__image" />
+      <p>{course.description}</p>
       <p>
-        Price: $
-        {Course.price}
+        Price: ${course.price}
       </p>
       <p>
-        Duration:
-        {Course.duration}
-        {' '}
-        minutes
+        Duration: {course.duration} minutes
       </p>
       <p>
-        Instructor:
-        {Course.instructor}
+        Instructor: {course.instructor}
       </p>
+      <button onClick={handleDelete}>Delete</button>
     </div>
   );
 };
