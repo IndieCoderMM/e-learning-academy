@@ -1,17 +1,18 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/reservations', type: :request do
-  let(:user) { User.create!(name: 'Tom')}
-  let(:course) { Course.create!(
-    title: "Title",
-    description: "some description",
-    price: 399,
-    duration: 30,
-    img_url: "https://imgurl",
-    instructor: "Instructor"
-  )}
-  let(:reservation) {Reservation.create!(course: course, user: user, date: '22-12-2023', city: 'Yangon')}
-
+  let(:user) { User.create!(name: 'Tom') }
+  let(:course) do
+    Course.create!(
+      title: 'Title',
+      description: 'some description',
+      price: 399,
+      duration: 30,
+      img_url: 'https://imgurl',
+      instructor: 'Instructor'
+    )
+  end
+  let(:reservation) { Reservation.create!(course:, user:, date: '22-12-2023', city: 'Yangon') }
 
   path '/api/users/{user_id}/reservations' do
     parameter name: 'user_id', in: :path, type: :string, description: 'User ID'
@@ -24,29 +25,29 @@ RSpec.describe 'api/reservations', type: :request do
 
       response(200, 'successful') do
         schema type: :array,
-        items: {
-          type: :object,
-          properties: {
-            id: { type: :integer },
-            date: { type: :string },
-            city: { type: :string },
-            course: {
-              type: :object,
-              properties: {
-                id: {type: :integer},
-                title: { type: :string },
-                description: { type: :string },
-                price: { type: :integer },
-                duration: { type: :integer },
-                img_url: { type: :string },
-                instructor: { type: :string }
-              },
-              required: %w[title description price duration img_url instructor]
-            }
-          },
-          required: %w[id course date city]
-        }
-        
+               items: {
+                 type: :object,
+                 properties: {
+                   id: { type: :integer },
+                   date: { type: :string },
+                   city: { type: :string },
+                   course: {
+                     type: :object,
+                     properties: {
+                       id: { type: :integer },
+                       title: { type: :string },
+                       description: { type: :string },
+                       price: { type: :integer },
+                       duration: { type: :integer },
+                       img_url: { type: :string },
+                       instructor: { type: :string }
+                     },
+                     required: %w[title description price duration img_url instructor]
+                   }
+                 },
+                 required: %w[id course date city]
+               }
+
         let(:user_id) { user.id }
         run_test!
       end
@@ -56,9 +57,9 @@ RSpec.describe 'api/reservations', type: :request do
       tags 'Reservations'
       consumes 'application/json'
       produces 'application/json'
-      
+
       parameter name: 'user_id', in: :path, type: :string, description: 'User ID'
-      
+
       parameter name: :reservation, in: :body, schema: {
         type: :object,
         properties: {
@@ -83,7 +84,6 @@ RSpec.describe 'api/reservations', type: :request do
 
         run_test!
       end
-
     end
   end
 
@@ -98,20 +98,19 @@ RSpec.describe 'api/reservations', type: :request do
       parameter name: 'user_id', in: :path, type: :string, description: 'User ID'
       parameter name: 'id', in: :path, type: :string, description: 'Reservation ID'
 
-      response(200, 'successful') do 
+      response(200, 'successful') do
         let(:user_id) { user.id }
         let(:id) { reservation.id }
 
         run_test!
       end
 
-      response(404, 'not found') do 
-        let(:user_id) {user.id}
+      response(404, 'not found') do
+        let(:user_id) { user.id }
         let(:id) { 'invalid_id' }
 
         run_test!
       end
-      
     end
   end
 end
