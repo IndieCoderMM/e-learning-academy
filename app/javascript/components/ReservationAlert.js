@@ -23,7 +23,7 @@ const ReservationAlert = () => {
         status: 'unauthenticated',
         variant: 'info',
         title: "Looks like you haven't logged in yet!",
-        p: 'Please log in with your username to view your enrolled courses.',
+        p: 'Please log in with your username to view your reserved courses.',
       });
     } else if (reservationData.status === 'error') {
       setState({
@@ -38,8 +38,8 @@ const ReservationAlert = () => {
         show: true,
         status: 'empty',
         variant: 'info',
-        title: "You haven't enrolled into any courses yet!",
-        p: 'Start enrolling to your favorite courses now.',
+        title: "You don't have any upcoming reservations!",
+        p: 'Explore our courses and make a reservation today!',
       });
     } else {
       setState((state) => ({ ...state, show: false }));
@@ -63,8 +63,8 @@ const ReservationAlert = () => {
       </Button>
     ),
     empty: (
-      <Button onClick={tryAgain} variant="outline-primary">
-        Enroll Now
+      <Button as={Link} to="/new_reservation" variant="outline-primary">
+        Reserve Course
       </Button>
     ),
   };
@@ -87,3 +87,4 @@ const ReservationAlert = () => {
 };
 
 export default ReservationAlert;
+

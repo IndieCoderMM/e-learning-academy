@@ -38,16 +38,13 @@ function Reservation() {
 
   return (
     <section className="page">
-      <h2 className="page__title">Enrolled Courses</h2>
+      <h2 className="page__title">Scheduled Classes</h2>
       <ReservationAlert />
       {reservedItems.length > 0 && currentUser.id != null ? (
         <div>
           <p className="fs-5 text-muted">
-            You have enrolled to
-            {' '}
-            <b>{reservedItems.length}</b>
-            {' '}
-            courses.
+            You currently have <b>{reservedItems.length}</b> study sessions
+            scheduled.
           </p>
           <CustomCarousel items={reservedItems} />
         </div>

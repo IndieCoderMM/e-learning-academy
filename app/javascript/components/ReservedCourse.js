@@ -19,8 +19,6 @@ const ReservedCourse = ({ course, date, city }) => (
     <Link to={`/courses/${course.id}`} className="course-card__title">
       {course.title}
     </Link>
-    <hr />
-    <p>{course.description}</p>
     <div className="course-card__details">
       <div>
         <span className="course-card__icon">

@@ -7,6 +7,7 @@ import { loginUser, registerUser } from '../store/user';
 function Login() {
   const [username, setUsername] = useState('');
   const [mode, setMode] = useState('login');
+  const [alert, setAlert] = useState('');
   const userData = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ function Login() {
       if (current === 'login') return 'signup';
       return 'login';
     });
+    setAlert('');
   };
 
   const handleUsernameChange = (event) => {
@@ -34,6 +36,8 @@ function Login() {
   useEffect(() => {
     if (userData.status === 'success') {
       navigate('/');
+    } else if (userData.status === 'error') {
+      setAlert(userData.error);
     }
   }, [userData, navigate]);
 
@@ -42,11 +46,18 @@ function Login() {
       <div className="styled-form-container">
         <h2 className="page__title">
           {mode === 'login'
-            ? 'Log In To Existing Account'
-            : 'Register New User'}
+            ? 'Welcome Back to StudiCo'
+            : 'Join Our Learning Community'}
         </h2>
-        {userData.status === 'error' && (
-          <Alert variant="danger">{userData.error}</Alert>
+        <p>
+          {mode === 'login'
+            ? ' Log in to continue your learning journey'
+            : 'Register now and unlock your full learning potential'}
+        </p>
+        {alert && (
+          <Alert variant="danger" className="py-1 px-3">
+            {alert}
+          </Alert>
         )}
         <form onSubmit={handleSubmit} className="styled-form">
           <div className="styled-form__field">
@@ -55,6 +66,7 @@ function Login() {
               type="text"
               value={username}
               autoFocus
+              required
               onChange={handleUsernameChange}
               className="styled-form__input"
             />
@@ -65,7 +77,9 @@ function Login() {
           <hr />
           <div className="w-100">
             <p className="fs-4 fw-bold">
-              {mode === 'login' ? 'New User?' : 'Already have an account?'}
+              {mode === 'login'
+                ? 'New to the platform?'
+                : 'Already have an account?'}
             </p>
             <button
               type="button"

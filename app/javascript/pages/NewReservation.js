@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert';
 import { createNewReservation } from '../store/reservation';
 
@@ -38,14 +38,18 @@ function NewReservation() {
   return (
     <section className="page form-page">
       <div className="styled-form-container">
-        <h2 className="page__title">Create a new reservation</h2>
+        <h2 className="page__title">Make New Reservation</h2>
         {currentUser.id == null && (
-          <Alert variant="primary">
+          <Alert variant="primary" className="py-1">
             Please log in to create a new reservation.
           </Alert>
         )}
 
-        {alert !== '' && <Alert variant="danger">{alert}</Alert>}
+        {alert !== '' && (
+          <Alert variant="danger" className="py-1">
+            {alert}
+          </Alert>
+        )}
 
         <form onSubmit={handleSubmit} className="styled-form">
           <div className="styled-form__field">
@@ -63,7 +67,7 @@ function NewReservation() {
           </div>
           <div className="styled-form__field">
             <label htmlFor="course-select">
-              Course
+              Select Class
               <select
                 id="course-select"
                 className="styled-form__input"
@@ -83,20 +87,20 @@ function NewReservation() {
           </div>
           <div className="styled-form__field">
             <label htmlFor="city">
-              City
+              Enter Study Location
               <input
                 id="city"
                 type="text"
                 ref={cityRef}
                 className="styled-form__input"
-                placeholder="Enter City"
+                placeholder="Enter preferred location"
                 required
               />
             </label>
           </div>
           <div className="styled-form__field">
             <label htmlFor="date">
-              Date
+              Select Date
               <input
                 id="date"
                 type="date"
@@ -108,11 +112,15 @@ function NewReservation() {
             </label>
           </div>
           <div className="d-flex gap-2 justify-content-center w-100 mt-3">
-            <button type="button" className="styled-form__action">
+            <button
+              type="button"
+              className="styled-form__action"
+              onClick={() => navigate('/')}
+            >
               Cancel
             </button>
             <button type="submit" className="styled-form__action">
-              Create
+              Confirm
             </button>
           </div>
         </form>

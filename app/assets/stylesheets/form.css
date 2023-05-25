@@ -25,8 +25,7 @@
 .styled-form__field label {
   width: 100%;
   text-align: left;
-  font-size: 1.3rem;
-  font-weight: 500;
+  font-size: 1.2rem;
 }
 
 .styled-form__input,
@@ -37,6 +36,7 @@
   border: solid 2px #fff;
   border-radius: 50rem;
   color: #fff;
+  font-size: 1.3rem;
   font-weight: 500;
 }
 
