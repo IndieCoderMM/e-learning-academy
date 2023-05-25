@@ -6,7 +6,6 @@ import CustomCarousel from '../components/CustomCarousel';
 import ReservationAlert from '../components/ReservationAlert';
 
 function Reservation() {
-  const reservationStatus = useSelector((state) => state.reservations.status);
   const reservationData = useSelector((state) => state.reservations.data);
   const currentUser = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -15,15 +14,9 @@ function Reservation() {
   // Getting reserved courses from backend
   useEffect(() => {
     if (currentUser.id != null) {
-      if (
-        reservationStatus === 'idle'
-        || (reservationData.length > 0
-          && reservationData[0].user_id !== currentUser.id)
-      ) {
-        dispatch(getUserReservations(currentUser.id));
-      }
+      dispatch(getUserReservations(currentUser.id));
     }
-  }, [reservationStatus, currentUser.id, dispatch, reservationData]);
+  }, [currentUser.id, dispatch]);
 
   // Loading array of elements
   if (reservationData.length) {
