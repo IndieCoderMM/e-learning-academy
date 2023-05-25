@@ -63,4 +63,3 @@ class Api::CoursesController < ApplicationController
     params.require(:course).permit(:title, :img_url, :description, :price, :duration, :instructor)
   end
 end
-
