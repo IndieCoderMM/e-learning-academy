@@ -1,11 +1,10 @@
 import React from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 const Details = () => {
   const { id } = useParams();
-  // const history = useHistory();
   const courses = useSelector((state) => state.courses.courses);
   const course = courses.find((c) => c.id === parseInt(id, 10));
   const dispatch = useDispatch();
@@ -14,11 +13,7 @@ const Details = () => {
     axios
       .delete(`/api/courses/${id}`)
       .then(() => {
-        dispatch({ type: 'DELETE_COURSE', payload: id }); // Update Redux state by dispatching the action manually
-        // history.push('/');
-      })
-      .catch((error) => {
-        console.log(error);
+        dispatch({ type: 'DELETE_COURSE', payload: id });
       });
   };
 
@@ -32,15 +27,22 @@ const Details = () => {
       <img src={course.img_url} alt={course.title} className="course-detail__image" />
       <p>{course.description}</p>
       <p>
-        Price: ${course.price}
+        Price: $
+        {course.price}
       </p>
       <p>
-        Duration: {course.duration} minutes
+        Duration:
+        {' '}
+        {course.duration}
+        {' '}
+        minutes
       </p>
       <p>
-        Instructor: {course.instructor}
+        Instructor:
+        {' '}
+        {course.instructor}
       </p>
-      <button onClick={handleDelete}>Delete</button>
+      <button type="button" onClick={() => handleDelete}>Delete</button>
     </div>
   );
 };
