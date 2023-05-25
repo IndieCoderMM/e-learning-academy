@@ -1,12 +1,14 @@
-.reserve-form-page {
-  background-color: var(--primary-green);
+.styled-form-container {
+  background-color: var(--primary-transparent);
   color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0.5rem;
+  min-height: 100%;
 }
 
-.reserve-form {
+.styled-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,55 +18,54 @@
   max-width: 500px;
 }
 
-.reserve-form__field {
+.styled-form__field {
   width: 100%;
 }
 
-.reserve-form__field label {
+.styled-form__field label {
   width: 100%;
   text-align: left;
-  padding: 0 1rem 0.25rem;
-  font-size: 1.3rem;
-  font-weight: 500;
+  font-size: 1.2rem;
 }
 
-.reserve-form__input,
-.reserve-form__action {
+.styled-form__input,
+.styled-form__action {
   width: 100%;
   padding: 0.5rem 1rem;
   background: none;
   border: solid 2px #fff;
   border-radius: 50rem;
   color: #fff;
+  font-size: 1.3rem;
   font-weight: 500;
 }
 
-/* select.reserve-form__input {
+select.styled-form__input {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: url('images/dropdown-arrow.png');
+  background-image: url('assets/drop-down-arrow.png');
   background-repeat: no-repeat;
-  background-size: contain;
   background-position: right center;
   padding-right: 20px;
-} */
-
-.reserve-form__input::placeholder {
-  color: #fff;
 }
 
-.reserve-form__input:focus {
+.styled-form__input::placeholder {
+  color: #fff;
+  font-weight: 400;
+}
+
+.styled-form__input:focus {
   outline: none;
   background-color: #fff;
   color: #000;
 }
 
-.reserve-form__action {
+.styled-form__action {
   transition: all 0.2s;
 }
 
-.reserve-form__action:hover {
+.styled-form__action:hover {
   background-color: #fff;
   color: #000;
 }

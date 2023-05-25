@@ -1,16 +1,12 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import getCSRFToken from '../utils/getCSRFToken';
 
 const initialState = {
   courses: [],
   loading: false,
   error: null,
-};
-
-const getCSRFToken = () => {
-  const csrfTag = document.querySelector('meta[name=csrf-token]');
-  return csrfTag ? csrfTag.content : '';
 };
 
 const FETCHED_COURSES = 'courses/fetchCourses';

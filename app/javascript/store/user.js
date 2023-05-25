@@ -1,9 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
-const getCSRFToken = () => {
-  const csrfTag = document.querySelector('meta[name=csrf-token]');
-  return csrfTag ? csrfTag.content : '';
-};
+import getCSRFToken from '../utils/getCSRFToken';
 
 export const loginUser = createAsyncThunk(
   'user/login',
@@ -60,7 +56,10 @@ const userSlice = createSlice({
   reducers: {
     logOutUser(state) {
       return {
-        ...state, status: 'idle', name: '', id: null,
+        ...state,
+        status: 'idle',
+        name: '',
+        id: null,
       };
     },
   },

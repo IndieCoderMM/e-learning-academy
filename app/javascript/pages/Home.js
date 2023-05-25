@@ -32,9 +32,12 @@ const Home = () => {
   return (
     <section className="page">
       <h2 className="page__title">
-        All available courses:
-        {' '}
-        <b>{coursesItems.length}</b>
+        Explore Featured Courses&nbsp;
+        <small>
+          (
+          <b>{coursesItems.length}</b>
+          &nbsp;Available)
+        </small>
       </h2>
       <CustomCarousel items={coursesItems} />
     </section>
