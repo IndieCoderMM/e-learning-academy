@@ -25,7 +25,6 @@ schema_reservation = {
   required: %w[id course date city]
 }
 
-
 RSpec.describe 'api/reservations', type: :request do
   let(:user) { User.create!(name: 'Tom') }
   let(:course) do
