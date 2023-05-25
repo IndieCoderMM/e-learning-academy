@@ -5,7 +5,7 @@ import {
   FaGraduationCap, FaClock, FaMoneyBillAlt, FaTrash,
 } from 'react-icons/fa';
 
-const CourseItem = ({ course, onDelete }) => (
+const DeleteCourseItem = ({ course, onDelete }) => (
   <div key={course.id} className="course-card">
     <div className="course-card__frame">
       <img
@@ -31,9 +31,6 @@ const CourseItem = ({ course, onDelete }) => (
           {course.price}
         </p>
       </div>
-      <button type="button" className="course-card__delete-btn" onClick={() => onDelete(course.id)}>
-        <FaTrash />
-      </button>
       <div>
         <span className="course-card__icon">
           <FaClock />
@@ -51,10 +48,13 @@ const CourseItem = ({ course, onDelete }) => (
         <p>{course.instructor}</p>
       </div>
     </div>
+    <button type="button" className="course-card__icon course-card_delete" onClick={() => onDelete(course.id)}>
+      <FaTrash />
+    </button>
   </div>
 );
 
-CourseItem.propTypes = {
+DeleteCourseItem.propTypes = {
   course: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
@@ -67,4 +67,4 @@ CourseItem.propTypes = {
   onDelete: PropTypes.func.isRequired,
 };
 
-export default CourseItem;
+export default DeleteCourseItem;
