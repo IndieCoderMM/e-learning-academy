@@ -57,6 +57,7 @@ paths:
                         instructor:
                           type: string
                       required:
+                      - id
                       - title
                       - description
                       - price
