@@ -1,9 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
-const getCSRFToken = () => {
-  const csrfTag = document.querySelector('meta[name=csrf-token]');
-  return csrfTag ? csrfTag.content : '';
-};
+import { getCSRFToken } from '../utils/getCSRFToken';
 
 export const getUserReservations = createAsyncThunk(
   'reservations/getUserReservations',
@@ -37,6 +33,22 @@ export const createNewReservation = createAsyncThunk(
       throw new Error(data.message);
     }
     return data;
+  },
+);
+
+export const deleteReservation = createAsyncThunk(
+  'reservations/deleteReservation',
+  async ({ userId, id }) => {
+    const res = await fetch(`/api/users/${userId}/reservations/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'X-CSRF-Token': getCSRFToken(),
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error('Failed to delete reservation');
+    }
   },
 );
 
@@ -74,6 +86,10 @@ const reservationSlice = createSlice({
         ...state,
         status: 'error',
         error: action.error.message,
+      }))
+      .addCase(deleteReservation.fulfilled, (state) => ({
+        ...state,
+        status: 'deleted',
       }));
   },
 });

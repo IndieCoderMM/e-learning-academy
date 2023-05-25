@@ -6,7 +6,7 @@ import CustomCarousel from '../components/CustomCarousel';
 import ReservationAlert from '../components/ReservationAlert';
 
 function Reservation() {
-  const reservationData = useSelector((state) => state.reservations.data);
+  const reservationState = useSelector((state) => state.reservations);
   const currentUser = useSelector((state) => state.user);
   const dispatch = useDispatch();
   let reservedItems = [];
@@ -16,15 +16,16 @@ function Reservation() {
     if (currentUser.id != null) {
       dispatch(getUserReservations(currentUser.id));
     }
-  }, [currentUser.id, dispatch]);
+  }, [currentUser, dispatch]);
 
   // Loading array of elements
-  if (reservationData.length) {
+  if (reservationState.data.length) {
     reservedItems = [];
-    reservationData.forEach((reservation) => {
+    reservationState.data.forEach((reservation) => {
       const item = {
         element: (
           <ReservedCourse
+            id={reservation.id}
             course={reservation.course}
             date={reservation.date}
             city={reservation.city}
