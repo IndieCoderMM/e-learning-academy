@@ -60,6 +60,9 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+  gem 'capybara'    # Simulates user interaction with the application
+  gem 'webmock'     # Mocks HTTP requests
+  gem 'database_cleaner' # Cleans the database between tests
 end
 
 group :development do
