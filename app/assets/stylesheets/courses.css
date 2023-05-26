@@ -74,6 +74,15 @@
   background-color: #ccc;
 }
 
+.course-card_delete {
+  color: #f00;
+  border-color: #f00;
+}
+
+.course-card_delete:hover {
+  font-size: larger;
+}
+
 .new-course-form-container {
   gap: 0.8rem;
   padding: 0.5rem;
