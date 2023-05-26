@@ -1,3 +1,8 @@
+# Clear existing data
+Reservation.destroy_all
+User.destroy_all
+Course.destroy_all
+
 Course.create(
   title: "Programming with Python",
   description: "Learn the basics of programming in python.",
@@ -33,11 +38,6 @@ Course.create(
   img_url: "https://img-b.udemycdn.com/course/750x422/705264_caa9_13.jpg",
   instructor: "Peter Ugwu"
 )
-
-# Clear existing data
-# Reservation.destroy_all
-# User.destroy_all
-# Course.destroy_all
 
 6.times do |n|
     course = Course.create!(
