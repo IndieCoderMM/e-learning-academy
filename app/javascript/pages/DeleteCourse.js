@@ -13,13 +13,9 @@ const DeleteCourse = () => {
 
   useEffect(() => {
     if (currentUser.id != null) {
-      if ((courses.length > 0
-          && courses[0].user_id !== currentUser.id)
-      ) {
-        dispatch(coursesActions.fetchCourses());
-      }
+      dispatch(coursesActions.fetchCourses());
     }
-  }, [dispatch, courses, currentUser.id]);
+  }, [currentUser.id, dispatch]);
 
   if (courses.length) {
     coursesItems = [];
