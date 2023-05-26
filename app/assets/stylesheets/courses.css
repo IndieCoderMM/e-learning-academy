@@ -75,8 +75,8 @@
 }
 
 .course-card_delete {
-  color: #ff0000;
-  border-color: #ff0000;
+  color: #f00;
+  border-color: #f00;
 }
 
 .course-card_delete:hover {
