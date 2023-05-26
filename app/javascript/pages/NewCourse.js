@@ -45,18 +45,18 @@ const NewCourse = ({ createCourse }) => {
       <NewCourseAlert />
       {currentUser.id != null ? (
         <Container
-      className="d-flex flex-column justify-content-center align-items-center gap-2 p-3 new-course-form-container"
-      fluid
-    >
+          className="d-flex flex-column justify-content-center align-items-center gap-2 p-3 new-course-form-container"
+          fluid
+        >
           <h1>Add New Course</h1>
 
           <Form
-        onSubmit={handleSubmit}
-        className="d-flex flex-column p-3 text-dark bg-white rounded w-50 h-50"
-      >
+            onSubmit={handleSubmit}
+            className="d-flex flex-column p-3 text-dark bg-white rounded w-50 h-50"
+          >
             {message && (
-          <Alert variant={errorMessage ? 'danger' : 'success'}>{message}</Alert>
-        )}
+            <Alert variant={errorMessage ? 'danger' : 'success'}>{message}</Alert>
+            )}
             <Form.Label>
               Title:
               <Form.Control
