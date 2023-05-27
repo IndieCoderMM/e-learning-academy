@@ -49,7 +49,11 @@ function Reservation() {
       {reservedItems.length > 0 && currentUser.id != null ? (
         <div>
           <p className="fs-5 text-muted">
-            You currently have <b>{reservedItems.length}</b> study sessions
+            You currently have
+            {' '}
+            <b>{reservedItems.length}</b>
+            {' '}
+            study sessions
             scheduled.
           </p>
           <CustomCarousel items={reservedItems} />
@@ -60,4 +64,3 @@ function Reservation() {
 }
 
 export default Reservation;
-

@@ -115,7 +115,7 @@ function NewReservation() {
             <button
               type="button"
               className="styled-form__action"
-              onClick={() => navigate('/')}
+              onClick={() => navigate(-1)}
             >
               Cancel
             </button>

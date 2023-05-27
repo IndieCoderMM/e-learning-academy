@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSnapCarousel } from 'react-snap-carousel';
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
-import { Container } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
 
 const CustomCarousel = ({ items }) => {
   const {
@@ -48,6 +48,7 @@ const CustomCarousel = ({ items }) => {
             type="button"
             onClick={() => prev()}
             className="carousel__arrow"
+            disabled={activePageIndex === 0}
           >
             <BiLeftArrow />
           </button>
@@ -76,6 +77,7 @@ const CustomCarousel = ({ items }) => {
             type="button"
             onClick={() => next()}
             className="carousel__arrow"
+            disabled={activePageIndex === pages.length - 1}
           >
             <BiRightArrow />
           </button>

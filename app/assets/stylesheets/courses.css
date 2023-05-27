@@ -120,3 +120,15 @@
   background-color: var(--primary-green);
   color: #fff;
 }
+
+.course-card__action {
+  width: 80%;
+  background-color: var(--primary-green);
+  border-color: var(--primary-green);
+}
+
+.course-card__action:hover,
+.course-card__action:active {
+  background-color: var(--green);
+  border-color: var(--green);
+}

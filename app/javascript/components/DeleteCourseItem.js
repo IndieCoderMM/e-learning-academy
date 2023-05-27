@@ -32,13 +32,20 @@ const DeleteCourseItem = ({ course }) => {
           <span className="course-card__icon">
             <FaMoneyBillAlt />
           </span>
-          <p>${course.price}</p>
+          <p>
+            $
+            {course.price}
+          </p>
         </div>
         <div>
           <span className="course-card__icon">
             <FaClock />
           </span>
-          <p>{course.duration} minutes</p>
+          <p>
+            {course.duration}
+            {' '}
+            minutes
+          </p>
         </div>
         <div>
           <span className="course-card__icon">
@@ -49,7 +56,7 @@ const DeleteCourseItem = ({ course }) => {
       </div>
       <Button
         type="button"
-        className="course-card__action w-100 d-flex align-items-center justify-content-center fw-bold"
+        className="w-100 d-flex align-items-center justify-content-center fw-bold"
         variant="outline-danger"
         onClick={handleDelete}
       >
@@ -72,4 +79,3 @@ DeleteCourseItem.propTypes = {
 };
 
 export default DeleteCourseItem;
-

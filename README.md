@@ -9,7 +9,8 @@
 <summary>Table of Contents</summary>
 
 - [🎓 ClassUp - Online Learning Platform ](#-classup---online-learning-platform-)
-  - [📸 Screenshot ](#-screenshot-)
+  - [📸 Screenshots ](#-screenshots-)
+  - [📋 Kanban Board](#-kanban-board)
   - [🧰 Tech Stack  ](#-tech-stack--)
   - [✨ Key Features  ](#-key-features--)
   - [📘 Getting Started  ](#-getting-started--)
@@ -34,10 +35,22 @@
 
 Our website allows users to reserve online classes while also providing the opportunity to schedule study sessions with fellow learners in their area. By bridging the gap between virtual learning and real-world interactions, Classup creates a vibrant and collaborative learning environment for students of all backgrounds.
 
-## 📸 Screenshot <a name="screenshot"></a>
+## 📸 Screenshots <a name="screenshot"></a>
 
 <img src="https://via.placeholder.com/468x300?text=App+Screenshot+Here" width=468 height=300 alt="screenshot" />
 
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 📋 Kanban Board 
+
+We used a Kanban board to manage our tasks and track the progress of our project.
+
+This is [the link to our Kanban Board](https://github.com/users/IndieCoderMM/projects/4).
+
+We're a group of 3 members: @tobuya, @tanveerisonline, @IndieCoderMM
+
+<img src="./kanban.png" width=600 height=400 alt="kanban board" />
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -50,14 +63,14 @@ Our website allows users to reserve online classes while also providing the oppo
 
 - **Front-end** 🎨: 
   - [React](https://reactjs.org/) - Building user interfaces
-  - [Redux](https://redux.js.org/) - Managing state and API calls
+  - [Redux](https://redux.js.org/) - Managing states and API calls
   - [Bootstrap](https://react-bootstrap.github.io/) - Pre-built UI components
 
 
 - **Tools** 🛠: 
-  - [Rspec](https://rspec.info/) - Testing framework
-  - [RSwag](https://github.com/rswag/rswag) - Documenting and testing API
-  - [Capybara](https://teamcapybara.github.io/capybara/) - Testing user interactions
+  - [Rspec](https://rspec.info/) - Testing models and requests
+  - [RSwag](https://github.com/rswag/rswag) - Documenting and testing API endpoints
+  - [Jest](https://jestjs.io/) - Unit tests for frontend components
   - [Webpack](https://webpack.js.org/) - Module bundler for React/javascript
   - [Render](https://render.com/) - Cloud platform for deployment
 
@@ -91,7 +104,7 @@ Clone this repository to your desired foler.
 
 ```sh
 cd my-project
-git clone git@github.com:IndieCoderMM/e-learning-platform.git .
+git clone git@github.com:IndieCoderMM/e-learning-academy.git .
 ```
 
 ### 📥 Installation
@@ -181,8 +194,10 @@ Feel free to reach out to us with your suggestions, ideas, or feedback. We are a
 ## 🎯 Future Features  <a name="future-features"></a>
 
 - [ ] Implement secure *User authentication*
-- [ ] Implement *Search feature*
-- [ ] Add features to *Join study sessions*
+- [ ] Implement *Authorization* (Roles: Admin, Instructor, User)
+- [ ] Add *Join-study-sessions Feature*
+- [ ] Implement *Edit-courses Feature*
+- [ ] Implement *Search Feature*
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

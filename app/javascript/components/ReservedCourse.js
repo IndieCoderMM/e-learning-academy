@@ -58,7 +58,7 @@ const ReservedCourse = ({
       <div className="d-flex justify-content-center gap-1 w-100">
         <Button
           type="button"
-          className="course-card__action w-100 d-flex align-items-center justify-content-center"
+          className="w-100 d-flex align-items-center justify-content-center"
           variant="outline-danger"
           onClick={handleDelete}
         >
@@ -68,7 +68,7 @@ const ReservedCourse = ({
         </Button>
         <Button
           type="button"
-          className="course-card__action w-100 d-flex align-items-center justify-content-center"
+          className="w-100 d-flex align-items-center justify-content-center"
           variant="outline-success"
           onClick={handleDelete}
         >

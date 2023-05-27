@@ -99,7 +99,7 @@ const reservationSlice = createSlice({
         ...state,
         status: 'deleted',
       }))
-      .addCase(deleteReservation.rejected, (state) => ({
+      .addCase(deleteReservation.rejected, (state, action) => ({
         ...state,
         status: 'failed',
         error: action.error.message,
@@ -108,4 +108,3 @@ const reservationSlice = createSlice({
 });
 
 export default reservationSlice.reducer;
-

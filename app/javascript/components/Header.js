@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, ButtonGroup, Dropdown } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Dropdown from 'react-bootstrap/Dropdown';
 import { FaUserCircle } from 'react-icons/fa';
 import { BiLogInCircle } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
@@ -26,7 +28,12 @@ const Header = ({ openNav, toggleNav }) => {
           <span className="hamburger-btn__bar" />
           <span className="hamburger-btn__bar" />
         </button>
-        {!openNav && <h1 className="brand-logo">ClassUp</h1>}
+        <h1
+          className="brand-logo"
+          style={openNav ? { visibility: 'hidden' } : {}}
+        >
+          ClassUp
+        </h1>
       </div>
       {currentUser ? (
         <div className="d-flex align-items-center gap-1">

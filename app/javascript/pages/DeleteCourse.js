@@ -45,4 +45,3 @@ const DeleteCourse = () => {
 };
 
 export default DeleteCourse;
-

@@ -35,7 +35,7 @@ function Login() {
 
   useEffect(() => {
     if (userData.status === 'success') {
-      navigate('/');
+      navigate(-1);
     } else if (userData.status === 'error') {
       setAlert(userData.error);
     }

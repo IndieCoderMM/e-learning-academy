@@ -21,7 +21,7 @@ const SideNavbar = ({ show, toggleNav }) => {
           Home
         </NavLink>
         <NavLink className="sidebar__navlink" to="/reservation">
-          Reservation
+          Reservations
         </NavLink>
         <NavLink className="sidebar__navlink" to="/new_course">
           New Course
@@ -85,4 +85,3 @@ SideNavbar.propTypes = {
 };
 
 export default SideNavbar;
-

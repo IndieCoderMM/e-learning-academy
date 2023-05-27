@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FaGraduationCap, FaClock, FaMoneyBillAlt } from 'react-icons/fa';
+import Button from 'react-bootstrap/Button';
 
 const CourseItem = ({ course }) => (
   <div key={course.id} className="course-card">
@@ -16,8 +17,6 @@ const CourseItem = ({ course }) => (
       {course.title}
     </Link>
     <hr className="course-card__hr" />
-
-    <p>{course.description}</p>
     <div className="course-card__details">
       <div>
         <span className="course-card__icon">
@@ -46,6 +45,13 @@ const CourseItem = ({ course }) => (
         <p>{course.instructor}</p>
       </div>
     </div>
+    <Button
+      as={Link}
+      to={`/courses/${course.id}`}
+      className="course-card__action"
+    >
+      View Detail
+    </Button>
   </div>
 );
 

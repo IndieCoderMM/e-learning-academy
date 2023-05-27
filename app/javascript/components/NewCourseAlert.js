@@ -26,14 +26,6 @@ const NewCourseAlert = () => {
         title: "Looks like you haven't logged in yet!",
         p: 'Please log in with your username to able to create courses.',
       });
-    } else if (coursesError) {
-      setState({
-        show: true,
-        status: 'error',
-        variant: 'danger',
-        title: 'Oops! There was an error!',
-        p: coursesError,
-      });
     } else {
       setState((state) => ({ ...state, show: false }));
     }

@@ -55,7 +55,9 @@ const NewCourse = ({ createCourse }) => {
             className="d-flex flex-column p-3 text-dark bg-white rounded w-50 h-50"
           >
             {message && (
-            <Alert variant={errorMessage ? 'danger' : 'success'}>{message}</Alert>
+              <Alert variant={errorMessage ? 'danger' : 'success'}>
+                {message}
+              </Alert>
             )}
             <Form.Label>
               Title:
@@ -106,6 +108,7 @@ const NewCourse = ({ createCourse }) => {
               <Form.Control
                 type="number"
                 value={price}
+                min={0}
                 onChange={(e) => setPrice(e.target.value)}
                 required
               />
@@ -116,6 +119,7 @@ const NewCourse = ({ createCourse }) => {
               Duration:
               <Form.Control
                 type="number"
+                min={1}
                 value={duration}
                 onChange={(e) => setDuration(e.target.value)}
                 required
@@ -132,6 +136,7 @@ const NewCourse = ({ createCourse }) => {
     </section>
   );
 };
+/* eslint-enable camelcase */
 
 NewCourse.propTypes = {
   createCourse: PropTypes.func.isRequired,
