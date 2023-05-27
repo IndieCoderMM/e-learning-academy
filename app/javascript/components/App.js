@@ -13,6 +13,7 @@ import Login from '../pages/Login';
 import Detail from '../pages/Details';
 
 import Header from './Header';
+import Profile from '../pages/Profile';
 
 function App() {
   const [openNav, setOpenNav] = useState(true);
@@ -30,6 +31,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/new_course" element={<NewCourse />} />
             <Route path="/courses/:id" element={<Detail />} />
             <Route path="/reservation" element={<Reservation />} />
@@ -43,3 +45,4 @@ function App() {
 }
 
 export default App;
+

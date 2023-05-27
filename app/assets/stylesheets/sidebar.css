@@ -37,7 +37,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 0.5rem;
+  padding-left: 0.85rem;
 }
 
 .sidebar__navlink {
@@ -56,11 +56,12 @@
 
 .sidebar__navlink:hover {
   background-color: gold;
-  box-shadow: 0 3px 5px -3px inset #3335;
+  box-shadow: 0 2px 5px -3px inset #3335;
   color: #fff;
 }
 
 .sidebar__navlink.active {
+  box-shadow: 0 4px 5px -3px inset #3335;
   background-color: var(--primary-green);
   color: #fff;
 }
