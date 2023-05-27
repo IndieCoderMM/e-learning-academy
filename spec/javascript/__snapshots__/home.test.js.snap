@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home displays all available courses 1`] = `
+exports[`Home page displays all available courses 1`] = `
 <DocumentFragment>
   <section
     class="page"
