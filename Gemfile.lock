@@ -106,7 +106,6 @@ GEM
     erubi (1.12.0)
     execjs (2.8.1)
     ffi (1.15.5)
-    ffi (1.15.5-x64-mingw-ucrt)
     globalid (1.1.0)
       activesupport (>= 5.0)
     hashdiff (1.0.1)

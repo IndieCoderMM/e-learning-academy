@@ -14,7 +14,11 @@ const Details = () => {
   return (
     <div className="course-detail">
       <div className="course-detail__image-container">
-        <img src={course.img_url} alt={course.title} className="course-detail__image" />
+        <img
+          src={course.img_url}
+          alt={course.title}
+          className="course-detail__image"
+        />
       </div>
       <div className="course-detail__details">
         <h2>{course.title}</h2>

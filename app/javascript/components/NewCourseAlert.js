@@ -8,6 +8,7 @@ import { coursesActions } from '../store/coursesSlice';
 const NewCourseAlert = () => {
   const currentUserId = useSelector((state) => state.user.id);
   const courses = useSelector((state) => state.courses.courses);
+  const coursesError = useSelector((state) => state.courses.error);
   const dispatch = useDispatch();
 
   const [state, setState] = useState({
@@ -25,18 +26,18 @@ const NewCourseAlert = () => {
         title: "Looks like you haven't logged in yet!",
         p: 'Please log in with your username to able to create courses.',
       });
-    } else if (courses.status === 'error') {
+    } else if (coursesError) {
       setState({
         show: true,
         status: 'error',
         variant: 'danger',
         title: 'Oops! There was an error!',
-        p: courses.error,
+        p: coursesError,
       });
     } else {
       setState((state) => ({ ...state, show: false }));
     }
-  }, [currentUserId, courses]);
+  }, [currentUserId, courses, coursesError]);
 
   const tryAgain = () => {
     dispatch(coursesActions.createCourses(currentUserId));
