@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSnapCarousel } from 'react-snap-carousel';
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
@@ -10,10 +10,17 @@ const CustomCarousel = ({ items }) => {
     snapPointIndexes,
     activePageIndex,
     pages,
+    refresh,
     prev,
     next,
     goTo,
   } = useSnapCarousel();
+
+  useEffect(() => {
+    refresh();
+  }, [items]);
+
+  if (items.length === 0) return null;
 
   return (
     <Container className="p-0" fluid>
