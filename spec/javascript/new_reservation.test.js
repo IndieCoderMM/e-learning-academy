@@ -2,11 +2,11 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
+import { BrowserRouter } from 'react-router-dom';
 import userReducer from '../../app/javascript/store/user';
 import coursesReducer from '../../app/javascript/store/coursesSlice';
 import reservationReducer from '../../app/javascript/store/reservation';
 import NewReservation from '../../app/javascript/pages/NewReservation';
-import { BrowserRouter } from 'react-router-dom';
 
 const currentUser = {
   id: 1,
@@ -33,7 +33,7 @@ const store = configureStore({
   preloadedState: {
     user: currentUser,
     courses: {
-      courses: courses,
+      courses,
     },
     reservations: {
       status: '',
@@ -84,7 +84,7 @@ describe('New Reservation Page', () => {
           name: '',
         },
         courses: {
-          courses: courses,
+          courses,
         },
         reservations: {
           status: '',

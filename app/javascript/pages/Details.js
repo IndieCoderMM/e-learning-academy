@@ -23,10 +23,15 @@ const Details = () => {
       <div className="course-detail__details">
         <h2>{course.title}</h2>
         <p>{course.description}</p>
-        <p>Price: ${course.price}</p>
+        <p>
+          Price: $
+          {course.price}
+        </p>
         <p>
           Duration:
-          {course.duration} minutes
+          {course.duration}
+          {' '}
+          minutes
         </p>
         <p>
           Instructor:

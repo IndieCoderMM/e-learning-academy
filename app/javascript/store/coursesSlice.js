@@ -33,10 +33,6 @@ export const createCourse = createAsyncThunk(
       },
     });
 
-    if (!response.ok) {
-      throw new Error('Error creating course!');
-    }
-
     return response.data;
   },
 );
@@ -44,16 +40,12 @@ export const createCourse = createAsyncThunk(
 export const destroyCourse = createAsyncThunk(
   DESTROYED_COURSE,
   async (courseId) => {
-    const response = await axios.delete(`${apiEndpoint}/${courseId}`, {
+    await axios.delete(`${apiEndpoint}/${courseId}`, {
       headers: {
         'Content-Type': 'application/json',
         'X-CSRF-Token': getCSRFToken(),
       },
     });
-
-    if (!response.ok) {
-      throw new Error('Error destroying course!');
-    }
 
     return courseId;
   },
@@ -72,6 +64,7 @@ const coursesSlice = createSlice({
       .addCase(fetchCourses.fulfilled, (state, action) => {
         state.loading = false;
         state.courses = action.payload;
+        state.error = null;
       })
       .addCase(fetchCourses.rejected, (state, action) => {
         state.loading = false;
@@ -84,6 +77,7 @@ const coursesSlice = createSlice({
       .addCase(createCourse.fulfilled, (state, action) => {
         state.loading = false;
         state.courses.push(action.payload);
+        state.error = null;
       })
       .addCase(createCourse.rejected, (state, action) => {
         state.loading = false;
@@ -98,6 +92,7 @@ const coursesSlice = createSlice({
         state.courses = state.courses.filter(
           (course) => course.id !== action.payload,
         );
+        state.error = null;
       })
       .addCase(destroyCourse.rejected, (state, action) => {
         state.loading = false;

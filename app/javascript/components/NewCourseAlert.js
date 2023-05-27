@@ -37,7 +37,7 @@ const NewCourseAlert = () => {
     } else {
       setState((state) => ({ ...state, show: false }));
     }
-  }, [currentUserId, courses]);
+  }, [currentUserId, courses, coursesError]);
 
   const tryAgain = () => {
     dispatch(coursesActions.createCourses(currentUserId));

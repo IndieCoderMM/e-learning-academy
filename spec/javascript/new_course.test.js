@@ -2,10 +2,10 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
+import { BrowserRouter } from 'react-router-dom';
 import userReducer from '../../app/javascript/store/user';
 import coursesReducer from '../../app/javascript/store/coursesSlice';
 import NewCourse from '../../app/javascript/pages/NewCourse';
-import { BrowserRouter } from 'react-router-dom';
 
 const currentUser = {
   id: 1,

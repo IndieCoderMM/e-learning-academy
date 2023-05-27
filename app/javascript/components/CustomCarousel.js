@@ -18,7 +18,7 @@ const CustomCarousel = ({ items }) => {
 
   useEffect(() => {
     refresh();
-  }, [items]);
+  }, [items, refresh]);
 
   if (items.length === 0) return null;
 
