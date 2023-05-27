@@ -63,6 +63,10 @@ const reservationSlice = createSlice({
   initialState,
   extraReducers(builder) {
     builder
+      .addCase(createNewReservation.pending, (state) => ({
+        ...state,
+        status: 'loading',
+      }))
       .addCase(createNewReservation.fulfilled, (state) => ({
         ...state,
         status: 'created',
@@ -87,11 +91,21 @@ const reservationSlice = createSlice({
         status: 'error',
         error: action.error.message,
       }))
+      .addCase(deleteReservation.pending, (state) => ({
+        ...state,
+        status: 'loading',
+      }))
       .addCase(deleteReservation.fulfilled, (state) => ({
         ...state,
         status: 'deleted',
+      }))
+      .addCase(deleteReservation.rejected, (state) => ({
+        ...state,
+        status: 'failed',
+        error: action.error.message,
       }));
   },
 });
 
 export default reservationSlice.reducer;
+

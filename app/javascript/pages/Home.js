@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { coursesActions } from '../store/coursesSlice';
 import CourseItem from '../components/CourseItem';
 import CustomCarousel from '../components/CustomCarousel';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const Home = () => {
   }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   return (
@@ -34,8 +35,7 @@ const Home = () => {
       <h2 className="page__title">
         Explore Featured Courses&nbsp;
         <small>
-          (
-          <b>{coursesItems.length}</b>
+          (<b>{coursesItems.length}</b>
           &nbsp;Available)
         </small>
       </h2>
@@ -45,3 +45,4 @@ const Home = () => {
 };
 
 export default Home;
+

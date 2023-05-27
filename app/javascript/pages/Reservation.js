@@ -4,6 +4,7 @@ import { getUserReservations } from '../store/reservation';
 import ReservedCourse from '../components/ReservedCourse';
 import CustomCarousel from '../components/CustomCarousel';
 import ReservationAlert from '../components/ReservationAlert';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 function Reservation() {
   const reservationState = useSelector((state) => state.reservations);
@@ -37,6 +38,10 @@ function Reservation() {
     });
   }
 
+  if (reservationState.status === 'loading') {
+    return <LoadingSpinner text="Checking your reservations ..." />;
+  }
+
   return (
     <section className="page">
       <h2 className="page__title">Scheduled Classes</h2>
@@ -44,11 +49,7 @@ function Reservation() {
       {reservedItems.length > 0 && currentUser.id != null ? (
         <div>
           <p className="fs-5 text-muted">
-            You currently have
-            {' '}
-            <b>{reservedItems.length}</b>
-            {' '}
-            study sessions
+            You currently have <b>{reservedItems.length}</b> study sessions
             scheduled.
           </p>
           <CustomCarousel items={reservedItems} />
@@ -59,3 +60,4 @@ function Reservation() {
 }
 
 export default Reservation;
+

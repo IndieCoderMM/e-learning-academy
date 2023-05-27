@@ -3,6 +3,8 @@
 :root {
   --primary-green: #96bf01;
   --primary-transparent: #96bf01df;
+  --green: #31bf01;
+  --dark-blue: #111586;
   --title-font: 'Tilt Warp', cursive;
   --primary-font: 'Roboto', sans-serif;
 }

@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
-import {
-  FaGraduationCap, FaClock, FaMoneyBillAlt,
-} from 'react-icons/fa';
+import { FaGraduationCap, FaClock, FaMoneyBillAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { coursesActions } from '../store/coursesSlice';
 
@@ -12,14 +10,17 @@ const DeleteCourseItem = ({ course }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    dispatch(coursesActions.destroyCourse(course.id))
-      .then(() => dispatch(coursesActions.fetchCourses()));
+    dispatch(coursesActions.destroyCourse(course.id));
   };
 
   return (
     <div key={course.id} className="course-card">
       <div className="course-card__frame">
-        <img src={course.img_url} alt={course.title} className="course-card__img" />
+        <img
+          src={course.img_url}
+          alt={course.title}
+          className="course-card__img"
+        />
       </div>
       <Link to={`/courses/${course.id}`} className="course-card__title">
         {course.title}
@@ -31,20 +32,13 @@ const DeleteCourseItem = ({ course }) => {
           <span className="course-card__icon">
             <FaMoneyBillAlt />
           </span>
-          <p>
-            $
-            {course.price}
-          </p>
+          <p>${course.price}</p>
         </div>
         <div>
           <span className="course-card__icon">
             <FaClock />
           </span>
-          <p>
-            {course.duration}
-            {' '}
-            minutes
-          </p>
+          <p>{course.duration} minutes</p>
         </div>
         <div>
           <span className="course-card__icon">
@@ -78,3 +72,4 @@ DeleteCourseItem.propTypes = {
 };
 
 export default DeleteCourseItem;
+
