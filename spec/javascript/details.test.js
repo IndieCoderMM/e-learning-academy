@@ -29,9 +29,9 @@ const store = configureStore({
   },
 });
 
-describe('Details', () => {
+describe('Details Page', () => {
   it('displays course details when course exists', () => {
-    render(
+    const { asFragment } = render(
       <MemoryRouter initialEntries={[`/details/${course.id}`]}>
         <Provider store={store}>
           <Routes>
@@ -41,6 +41,7 @@ describe('Details', () => {
       </MemoryRouter>,
     );
 
+    expect(asFragment()).toMatchSnapshot();
     expect(screen.getByText(course.title)).toBeInTheDocument();
     expect(screen.getByText(course.description)).toBeInTheDocument();
     expect(screen.getByText(`Price: $${course.price}`)).toBeInTheDocument();
