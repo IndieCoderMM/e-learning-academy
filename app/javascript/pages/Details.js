@@ -44,7 +44,6 @@
 
 // export default Details;
 
-
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
