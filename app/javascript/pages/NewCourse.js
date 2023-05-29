@@ -1,12 +1,12 @@
 /* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
-import { connect, useSelector } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  Button, Container, Form, Alert,
+  Button, Form, Alert,
 } from 'react-bootstrap';
+import { useNavigate } from 'react-router';
 import { coursesActions } from '../store/coursesSlice';
-import NewCourseAlert from '../components/NewCourseAlert';
 
 const NewCourse = ({ createCourse }) => {
   const [title, setTitle] = useState('');
@@ -18,6 +18,8 @@ const NewCourse = ({ createCourse }) => {
   const [message, setMessage] = useState('');
   const currentUser = useSelector((state) => state.user);
   const errorMessage = useSelector((state) => state.courses.error);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,6 +36,8 @@ const NewCourse = ({ createCourse }) => {
     createCourse(newCourse);
 
     setMessage('Course created successfully!');
+
+    dispatch(coursesActions.crea
   };
 
   useEffect(() => {
@@ -41,98 +45,119 @@ const NewCourse = ({ createCourse }) => {
   }, [errorMessage]);
 
   return (
-    <section className="page">
-      <NewCourseAlert />
-      {currentUser.id != null ? (
-        <Container
-          className="d-flex flex-column justify-content-center align-items-center gap-2 p-3 new-course-form-container"
-          fluid
+    <section className="page form-page">
+      <div className="styled-form-container">
+        <h2 className="page__title">Make New Course</h2>
+        {currentUser.id == null && (
+          <Alert variant="primary" className="py-1">
+            Please log in to create a new course.
+          </Alert>
+        )}
+
+        {/* {alert !== '' && (
+          <Alert variant="danger" className="py-1">
+            {alert}
+          </Alert>
+        )} */}
+
+        <Form
+          onSubmit={handleSubmit}
         >
-          <h1>Add New Course</h1>
+          {message && (
+          <Alert variant={errorMessage ? 'danger' : 'success'}>
+            {message}
+          </Alert>
+          )}
+          <Form.Label>
+            Title:
+            <Form.Control
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="styled-form__input"
+              placeholder="Title"
+              required
+            />
+          </Form.Label>
+          <br />
 
-          <Form
-            onSubmit={handleSubmit}
-            className="d-flex flex-column p-3 text-dark bg-white rounded w-50 h-50"
-          >
-            {message && (
-              <Alert variant={errorMessage ? 'danger' : 'success'}>
-                {message}
-              </Alert>
-            )}
-            <Form.Label>
-              Title:
-              <Form.Control
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-              />
-            </Form.Label>
-            <br />
+          <Form.Label>
+            Course Image URL
+            <Form.Control
+              type="text"
+              value={img_url}
+              onChange={(e) => setImgUrl(e.target.value)}
+              className="styled-form__input"
+              placeholder="Course Image URL"
+              required
+            />
+          </Form.Label>
+          <br />
 
-            <Form.Label>
-              Course Image URL:
-              <Form.Control
-                type="text"
-                value={img_url}
-                onChange={(e) => setImgUrl(e.target.value)}
-                required
-              />
-            </Form.Label>
-            <br />
+          <Form.Label>
+            Course Instructor
+            <Form.Control
+              type="text"
+              value={instructor}
+              onChange={(e) => setInstructor(e.target.value)}
+              className="styled-form__input"
+              placeholder="Course Instructor"
+              required
+            />
+          </Form.Label>
+          <br />
 
-            <Form.Label>
-              Instructor:
-              <Form.Control
-                type="text"
-                value={instructor}
-                onChange={(e) => setInstructor(e.target.value)}
-                required
-              />
-            </Form.Label>
-            <br />
+          <Form.Label>
+            Description
+            <Form.Control
+              type="textarea"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="styled-form__input"
+              placeholder="Description"
+              required
+            />
+          </Form.Label>
+          <br />
 
-            <Form.Label>
-              Description:
-              <Form.Control
-                type="textarea"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-              />
-            </Form.Label>
-            <br />
+          <Form.Label>
+            Price
+            <Form.Control
+              type="number"
+              value={price}
+              min={0}
+              onChange={(e) => setPrice(e.target.value)}
+              className="styled-form__input"
+              placeholder="Price"
+              required
+            />
+          </Form.Label>
+          <br />
 
-            <Form.Label>
-              Price:
-              <Form.Control
-                type="number"
-                value={price}
-                min={0}
-                onChange={(e) => setPrice(e.target.value)}
-                required
-              />
-            </Form.Label>
-            <br />
+          <Form.Label>
+            Duration
+            <Form.Control
+              type="number"
+              min={1}
+              value={duration}
+              onChange={(e) => setDuration(e.target.value)}
+              className="styled-form__input"
+              placeholder="Duration"
+              required
+            />
+          </Form.Label>
+          <br />
 
-            <Form.Label>
-              Duration:
-              <Form.Control
-                type="number"
-                min={1}
-                value={duration}
-                onChange={(e) => setDuration(e.target.value)}
-                required
-              />
-            </Form.Label>
-            <br />
-
-            <Button variant="primary" type="submit">
-              Create Course
+          <div className="d-flex gap-2 justify-content-center w-100 mt-3">
+            <Button onClick={() => navigate(-1)} className="styled-form__action">
+              Cancel
             </Button>
-          </Form>
-        </Container>
-      ) : null}
+            <Button type="submit" className="styled-form__action">
+              Confirm
+            </Button>
+          </div>
+        </Form>
+      </div>
     </section>
   );
 };

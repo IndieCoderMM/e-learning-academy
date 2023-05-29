@@ -36,6 +36,9 @@ const DeleteCourse = () => {
 
   return (
     <section className="page">
+      <h2 className="page__title">
+        Delete course(s)
+      </h2>
       <DeleteCourseAlert />
       {coursesItems.length > 0 && currentUser.id != null ? (
         <CustomCarousel items={coursesItems} />
