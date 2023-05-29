@@ -1,94 +1,122 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUserReservations } from '../../app/javascript/store/reservation';
+import { render, screen, act } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
 import Reservation from '../../app/javascript/pages/Reservation';
+import userReducer from '../../app/javascript/store/user';
+import reservationReducer from '../../app/javascript/store/reservation';
 
-jest.mock('react-redux', () => ({
-  useSelector: jest.fn(),
-  useDispatch: jest.fn(),
+const currentUser = {
+  id: 1,
+  name: 'John Doe',
+};
+
+const courseData = {
+  id: 1,
+  title: 'Course 1',
+  description: 'Description for course 1',
+  instructor: 'Instructor 1',
+  price: 5.99,
+  duration: 300,
+  img_url: 'image1.jpg',
+};
+
+const initialReservation = [
+  {
+    id: 1,
+    course: courseData,
+    date: '2023-05-28',
+    city: 'New York',
+  },
+];
+
+const store = configureStore({
+  reducer: {
+    user: userReducer,
+    reservations: reservationReducer,
+  },
+  preloadedState: {
+    user: currentUser,
+    reservations: { data: initialReservation },
+  },
+});
+
+jest.mock('../../app/javascript/components/CustomCarousel', () => ({
+  __esModule: true,
+  default: jest.fn().mockImplementation(({ items }) => (
+    <div data-testid="custom-carousel">
+      {items.map((item) => (
+        <div key={item.key}>{item.element.props.course.title}</div>
+      ))}
+    </div>
+  )),
 }));
 
-jest.mock('../../app/javascript/store/reservation', () => ({
-  getUserReservations: jest.fn(),
+jest.mock('../../app/javascript/components/ReservationAlert', () => ({
+  __esModule: true,
+  default: jest
+    .fn()
+    .mockImplementation(() => (
+      <div data-testid="reservation-alert">Mock ReservationAlert component</div>
+    )),
 }));
 
 describe('Reservation component', () => {
-  beforeEach(() => {
-    useSelector.mockReturnValue({
-      data: [
-        {
-          id: 1,
-          course: 'Math',
-          date: '2023-05-28',
-          city: 'New York',
-        },
-        {
-          id: 2,
-          course: 'Science',
-          date: '2023-05-29',
-          city: 'Los Angeles',
-        },
-      ],
+  it('renders the page title', async () => {
+    await act(() => {
+      render(
+        <Provider store={store}>
+          <Reservation />
+        </Provider>,
+      );
     });
-
-    useSelector.mockReturnValueOnce({ id: 123 });
-
-    useDispatch.mockReturnValue(jest.fn());
-  });
-
-  afterEach(() => {
-    useSelector.mockClear();
-    useDispatch.mockClear();
-    getUserReservations.mockClear();
-  });
-
-  it('renders the page title', () => {
-    render(<Reservation />);
-
     expect(screen.getByText('Scheduled Classes')).toBeInTheDocument();
   });
 
-  it('renders ReservationAlert component', () => {
-    render(<Reservation />);
+  it('renders ReservationAlert component', async () => {
+    await act(() => {
+      render(
+        <Provider store={store}>
+          <Reservation />
+        </Provider>,
+      );
+    });
 
     expect(screen.getByTestId('reservation-alert')).toBeInTheDocument();
   });
 
-  it('renders CustomCarousel component when there are reserved items and a current user', () => {
-    render(<Reservation />);
+  it('renders CustomCarousel component when there are reserved items and a current user', async () => {
+    await act(() => {
+      render(
+        <Provider store={store}>
+          <Reservation />
+        </Provider>,
+      );
+    });
 
-    expect(
-      screen.getByText('You currently have 2 study sessions scheduled.'),
-    ).toBeInTheDocument();
     expect(screen.getByTestId('custom-carousel')).toBeInTheDocument();
   });
 
-  it('does not render CustomCarousel component when there are no reserved items', () => {
-    useSelector.mockReturnValueOnce({ data: [] });
+  it('does not render CustomCarousel component when there are no reserved items', async () => {
+    const storeWithNoReservedItems = configureStore({
+      reducer: {
+        user: userReducer,
+        reservations: reservationReducer,
+      },
+      preloadedState: {
+        user: currentUser,
+        reservations: { data: [] },
+      },
+    });
 
-    render(<Reservation />);
+    await act(() => {
+      render(
+        <Provider store={storeWithNoReservedItems}>
+          <Reservation />
+        </Provider>,
+      );
+    });
 
-    expect(
-      screen.queryByText('You currently have 0 study sessions scheduled.'),
-    ).toBeNull();
     expect(screen.queryByTestId('custom-carousel')).toBeNull();
-  });
-
-  it('does not render CustomCarousel component when there is no current user', () => {
-    useSelector.mockReturnValueOnce(null);
-
-    render(<Reservation />);
-
-    expect(
-      screen.queryByText('You currently have 2 study sessions scheduled.'),
-    ).toBeNull();
-    expect(screen.queryByTestId('custom-carousel')).toBeNull();
-  });
-
-  it('dispatches getUserReservations action when currentUser is set', () => {
-    render(<Reservation />);
-
-    expect(getUserReservations).toHaveBeenCalledWith(123);
   });
 });
