@@ -17,27 +17,47 @@ const SideNavbar = ({ show, toggleNav }) => {
         </button>
       </header>
       <div className="sidebar__nav">
-        <NavLink className="sidebar__navlink" to="/">
+        <NavLink className="sidebar__navlink" to="/" onClick={toggleNav}>
           Home
         </NavLink>
-        <NavLink className="sidebar__navlink" to="/reservation">
+        <NavLink
+          className="sidebar__navlink"
+          to="/reservation"
+          onClick={toggleNav}
+        >
           Reservations
         </NavLink>
-        <NavLink className="sidebar__navlink" to="/new_course">
+        <NavLink
+          className="sidebar__navlink"
+          to="/new_course"
+          onClick={toggleNav}
+        >
           New Course
         </NavLink>
-        <NavLink className="sidebar__navlink" to="/new_reservation">
+        <NavLink
+          className="sidebar__navlink"
+          to="/new_reservation"
+          onClick={toggleNav}
+        >
           New Reservation
         </NavLink>
-        <NavLink className="sidebar__navlink" to="/delete_course">
+        <NavLink
+          className="sidebar__navlink"
+          to="/delete_course"
+          onClick={toggleNav}
+        >
           Delete Course
         </NavLink>
         {authenticated ? (
-          <NavLink className="sidebar__navlink" to="/profile">
+          <NavLink
+            className="sidebar__navlink"
+            to="/profile"
+            onClick={toggleNav}
+          >
             Profile
           </NavLink>
         ) : (
-          <NavLink className="sidebar__navlink" to="/login">
+          <NavLink className="sidebar__navlink" to="/login" onClick={toggleNav}>
             Log In
           </NavLink>
         )}
