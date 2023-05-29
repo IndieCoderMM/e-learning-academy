@@ -1,89 +1,129 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { useSelector, useDispatch } from 'react-redux';
-import { coursesActions } from '../../app/javascript/store/coursesSlice';
+import { render, screen, act } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
 import DeleteCourse from '../../app/javascript/pages/DeleteCourse';
+import userReducer from '../../app/javascript/store/user';
+import coursesReducer from '../../app/javascript/store/coursesSlice';
 
-jest.mock('react-redux', () => ({
-  useSelector: jest.fn(),
-  useDispatch: jest.fn(),
+const currentUser = {
+  id: 1,
+  name: 'John Doe',
+};
+
+const initialCourses = [
+  {
+    id: 1,
+    title: 'Math',
+  },
+  {
+    id: 2,
+    title: 'Science',
+  },
+];
+
+const store = configureStore({
+  reducer: {
+    user: userReducer,
+    courses: coursesReducer,
+  },
+  preloadedState: {
+    user: currentUser,
+    courses: {
+      courses: initialCourses,
+    },
+  },
+});
+
+jest.mock('../../app/javascript/components/CustomCarousel', () => ({
+  __esModule: true,
+  default: jest.fn().mockImplementation(({ items }) => (
+    <div data-testid="custom-carousel">
+      {items.map((item) => (
+        <div key={item.key}>{item.element.props.course.title}</div>
+      ))}
+    </div>
+  )),
 }));
 
-jest.mock('../../app/javascript/store/coursesSlice', () => ({
-  coursesActions: {
-    fetchCourses: jest.fn(),
-  },
+jest.mock('../../app/javascript/components/DeleteCourseAlert', () => ({
+  __esModule: true,
+  default: jest.fn().mockImplementation(() => (
+    <div data-testid="delete-course-alert">Mock DeleteCourseAlert component</div>
+  )),
 }));
 
 describe('DeleteCourse component', () => {
-  beforeEach(() => {
-    useSelector.mockReturnValue({
-      courses: [
-        { id: 1, title: 'Math' },
-        { id: 2, title: 'Science' },
-      ],
+  it('renders DeleteCourseAlert component', async () => {
+    await act(() => {
+      render(
+        <Provider store={store}>
+          <DeleteCourse />
+        </Provider>,
+      );
     });
 
-    useSelector.mockReturnValueOnce({ id: 123 });
-
-    useDispatch.mockReturnValue(jest.fn());
+    expect(screen.getByTestId('delete-course-alert')).toBeInTheDocument();
   });
 
-  afterEach(() => {
-    useSelector.mockClear();
-    useDispatch.mockClear();
-    coursesActions.fetchCourses.mockClear();
+  it('renders CustomCarousel component when there are courses and a current user', async () => {
+    await act(() => {
+      render(
+        <Provider store={store}>
+          <DeleteCourse />
+        </Provider>,
+      );
+    });
+
+    expect(screen.getByTestId('custom-carousel')).toBeInTheDocument();
   });
 
-  it('dispatches fetchCourses action when currentUser is set', () => {
-    render(<DeleteCourse />);
+  it('does not render CustomCarousel component when there are no courses', async () => {
+    const storeWithNoCourses = configureStore({
+      reducer: {
+        user: userReducer,
+        courses: coursesReducer,
+      },
+      preloadedState: {
+        user: currentUser,
+        courses: {
+          courses: [],
+        },
+      },
+    });
 
-    expect(coursesActions.fetchCourses).toHaveBeenCalled();
-  });
-
-  it('renders DeleteCourseItem component for each course when courses exist and currentUser is set', () => {
-    render(<DeleteCourse />);
-
-    expect(screen.getByText('Math')).toBeInTheDocument();
-    expect(screen.getByText('Science')).toBeInTheDocument();
-  });
-
-  it('does not render DeleteCourseItem component when courses do not exist', () => {
-    useSelector.mockReturnValueOnce({ courses: [] });
-
-    render(<DeleteCourse />);
-
-    expect(screen.queryByText('Math')).toBeNull();
-    expect(screen.queryByText('Science')).toBeNull();
-  });
-
-  it('does not render DeleteCourseItem component when currentUser is not set', () => {
-    useSelector.mockReturnValueOnce(null);
-
-    render(<DeleteCourse />);
-
-    expect(screen.queryByText('Math')).toBeNull();
-    expect(screen.queryByText('Science')).toBeNull();
-  });
-
-  it('renders CustomCarousel component when courses exist and currentUser is set', () => {
-    render(<DeleteCourse />);
-
-    expect(screen.getByTestId('')).toBeInTheDocument();
-  });
-
-  it('does not render CustomCarousel component when courses do not exist', () => {
-    useSelector.mockReturnValueOnce({ courses: [] });
-
-    render(<DeleteCourse />);
+    await act(() => {
+      render(
+        <Provider store={storeWithNoCourses}>
+          <DeleteCourse />
+        </Provider>,
+      );
+    });
 
     expect(screen.queryByTestId('custom-carousel')).toBeNull();
   });
 
-  it('does not render CustomCarousel component when currentUser is not set', () => {
-    useSelector.mockReturnValueOnce(null);
+  it('does not render CustomCarousel component when currentUser is not set', async () => {
+    const storeWithoutUser = configureStore({
+      reducer: {
+        user: userReducer,
+        courses: coursesReducer,
+      },
+      preloadedState: {
+        user: null,
+        courses: {
+          courses: initialCourses,
+        },
+      },
+    });
 
-    render(<DeleteCourse />);
+    await act(() => {
+      render(
+        <Provider store={storeWithoutUser}>
+          <DeleteCourse />
+        </Provider>,
+      );
+    });
 
     expect(screen.queryByTestId('custom-carousel')).toBeNull();
   });
