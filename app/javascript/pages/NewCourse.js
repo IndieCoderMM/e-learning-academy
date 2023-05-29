@@ -2,10 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  Button, Form, Alert,
-} from 'react-bootstrap';
-import { useNavigate } from 'react-router';
+import { Button, Form, Alert } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { coursesActions } from '../store/coursesSlice';
 
 const NewCourse = ({ createCourse }) => {
@@ -33,11 +31,9 @@ const NewCourse = ({ createCourse }) => {
       img_url,
     };
 
-    createCourse(newCourse);
+    dispatch(createCourse(newCourse));
 
     setMessage('Course created successfully!');
-
-    dispatch(coursesActions.crea
   };
 
   useEffect(() => {
@@ -60,13 +56,11 @@ const NewCourse = ({ createCourse }) => {
           </Alert>
         )} */}
 
-        <Form
-          onSubmit={handleSubmit}
-        >
+        <Form onSubmit={handleSubmit}>
           {message && (
-          <Alert variant={errorMessage ? 'danger' : 'success'}>
-            {message}
-          </Alert>
+            <Alert variant={errorMessage ? 'danger' : 'success'}>
+              {message}
+            </Alert>
           )}
           <Form.Label>
             Title:
@@ -149,7 +143,10 @@ const NewCourse = ({ createCourse }) => {
           <br />
 
           <div className="d-flex gap-2 justify-content-center w-100 mt-3">
-            <Button onClick={() => navigate(-1)} className="styled-form__action">
+            <Button
+              onClick={() => navigate(-1)}
+              className="styled-form__action"
+            >
               Cancel
             </Button>
             <Button type="submit" className="styled-form__action">
