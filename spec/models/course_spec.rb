@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Course, type: :model do
-  let(:course) { Course.new(title: 'Ruby Programming', description: 'Learn Ruby programming language', price: 99, duration: 30, img_url: 'example.com/ruby.jpg', instructor: 'John Doe') }
+  let(:course) do
+    Course.new(title: 'Ruby Programming', description: 'Learn Ruby programming language', price: 99, duration: 30,
+               img_url: 'example.com/ruby.jpg', instructor: 'John Doe')
+  end
 
   describe 'validations' do
     it 'is valid with valid attributes' do
@@ -29,7 +32,7 @@ RSpec.describe Course, type: :model do
     it 'is not valid with a negative price' do
       course.price = -10
       expect(course).to_not be_valid
-      expect(course.errors[:price]).to include("must be greater than or equal to 0")
+      expect(course.errors[:price]).to include('must be greater than or equal to 0')
     end
 
     it 'is not valid without a duration' do
@@ -41,7 +44,7 @@ RSpec.describe Course, type: :model do
     it 'is not valid with a non-positive duration' do
       course.duration = 0
       expect(course).to_not be_valid
-      expect(course.errors[:duration]).to include("must be greater than 0")
+      expect(course.errors[:duration]).to include('must be greater than 0')
     end
 
     it 'is not valid without an image URL' do

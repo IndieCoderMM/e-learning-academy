@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) {User.new(name: 'John')}
+  let(:user) { User.new(name: 'John') }
 
   describe 'validations' do
     it 'is valid with valid attributes' do
@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
       existing_user = User.create(name: 'John')
       user.name = existing_user.name
       expect(user).to_not be_valid
-      expect(user.errors[:name]).to include("has already been taken")
+      expect(user.errors[:name]).to include('has already been taken')
     end
   end
 
