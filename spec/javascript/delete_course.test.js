@@ -15,10 +15,20 @@ const initialCourses = [
   {
     id: 1,
     title: 'Math',
+    description: 'Maths is the language of the gods',
+    instructor: 'Instructor 1',
+    price: 50.99,
+    duration: 200,
+    img_url: 'image1.jpg',
   },
   {
     id: 2,
     title: 'Science',
+    description: 'Science is cool',
+    instructor: 'Instructor 2',
+    price: 59,
+    duration: 100,
+    img_url: 'image2.jpg',
   },
 ];
 
@@ -110,7 +120,7 @@ describe('DeleteCourse component', () => {
         courses: coursesReducer,
       },
       preloadedState: {
-        user: null,
+        user: { id: null },
         courses: {
           courses: initialCourses,
         },
