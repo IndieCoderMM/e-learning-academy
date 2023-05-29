@@ -84,6 +84,6 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-  database: classup_production
-  username: classup_user
+  database: classup_production_database
+  username: classup_database_user
   password: <%= ENV["CLASSUP_DATABASE_PASSWORD"]
