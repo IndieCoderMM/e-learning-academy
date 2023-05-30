@@ -14,7 +14,6 @@ schema_course = {
   required: %w[id title description price duration img_url instructor]
 }
 
-
 course_props = {
   title: { type: :string },
   description: { type: :string },
