@@ -40,11 +40,20 @@ const Details = () => {
           <h2 className="mb-3">{course.title}</h2>
           <h3 className="fs-5">{course.description}</h3>
           <p>
-            Price: <b>${course.price}</b>
+            Price:
+            {' '}
+            <b>
+              $
+              {course.price}
+            </b>
           </p>
           <p>
             Duration:
-            <b>{course.duration} minutes</b>
+            <b>
+              {course.duration}
+              {' '}
+              minutes
+            </b>
           </p>
           <p>
             Instructor:

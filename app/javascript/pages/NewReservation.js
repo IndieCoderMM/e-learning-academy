@@ -29,10 +29,10 @@ function NewReservation() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (currentUser.id == null) return;
-    const course_id = parseInt(selectedCourseId, 10);
+    const courseId = parseInt(selectedCourseId, 10);
     const data = {
       user_id: currentUser.id,
-      course_id,
+      courseId,
       city: cityRef.current.value,
       date: dateRef.current.value,
     };
@@ -49,7 +49,7 @@ function NewReservation() {
         variant: 'info',
         message: 'Please log in to create a new reservation',
       });
-    } else if (courses.length == 0) {
+    } else if (courses.length === 0) {
       setAlert({ variant: 'info', message: 'No courses available yet!' });
     } else {
       setAlert({ variant: '', message: '' });

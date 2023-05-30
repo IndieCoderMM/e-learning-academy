@@ -14,7 +14,7 @@ const Header = ({ openNav, toggleNav }) => {
   const logOut = () => {
     dispatch(logOutUser());
   };
-
+  logOut();
   return (
     <header className="d-flex justify-content-between p-1 main-header">
       <div className="d-flex align-items-center gap-1">
