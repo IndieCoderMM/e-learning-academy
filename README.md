@@ -10,6 +10,7 @@
 
 - [🎓 ClassUp - Online Learning Platform ](#-classup---online-learning-platform-)
   - [📸 Screenshots ](#-screenshots-)
+  - [� Live Demo](#-live-demo)
   - [📋 Kanban Board](#-kanban-board)
   - [🧰 Tech Stack  ](#-tech-stack--)
   - [✨ Key Features  ](#-key-features--)
@@ -33,12 +34,22 @@
 
 **ClassUp** is a collaborative online learning platform developed as the final capstone project at Microverse. 
 
-Our website allows users to reserve online classes while also providing the opportunity to schedule study sessions with fellow learners in their area. By bridging the gap between virtual learning and real-world interactions, Classup creates a vibrant and collaborative learning environment for students of all backgrounds.
+Our website allows users to reserve online classes while also providing the opportunity to schedule study sessions with fellow learners in their area. By bridging the gap between virtual learning and real-world interactions, Classup creates a vibrant and collaborative learning environment for students of all backgrounds. 
 
 ## 📸 Screenshots <a name="screenshot"></a>
 
-<img src="https://via.placeholder.com/468x300?text=App+Screenshot+Here" width=468 height=300 alt="screenshot" />
+<img src="./app_screenshot1.png" width=468 height=300 alt="screenshot" />
+<img src="./app_screenshot2.png" width=468 height=300 alt="screenshot" />
+<img src="./app_screenshot3.png" width=468 height=300 alt="screenshot" />
+<img src="./app_screenshot4.png" width=468 height=300 alt="screenshot" />
 
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## 🚀 Live Demo
+
+You can checkout the live demo of our project at [classup.onrender.com](https://classup.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -161,6 +172,12 @@ To run tests, run the following command:
 
 ```sh
 rspec spec --format doc
+```
+
+To test the frontend components, run:
+
+```sh
+npm test
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
