@@ -10,7 +10,7 @@
 
 - [🎓 ClassUp - Online Learning Platform ](#-classup---online-learning-platform-)
   - [📸 Screenshots ](#-screenshots-)
-  - [� Live Demo](#-live-demo)
+  - [🚀 Live Demo](#-live-demo)
   - [📋 Kanban Board](#-kanban-board)
   - [🧰 Tech Stack  ](#-tech-stack--)
   - [✨ Key Features  ](#-key-features--)
@@ -38,10 +38,10 @@ Our website allows users to reserve online classes while also providing the oppo
 
 ## 📸 Screenshots <a name="screenshot"></a>
 
-<img src="./app_screenshot1.png" width=468 height=300 alt="screenshot" />
-<img src="./app_screenshot2.png" width=468 height=300 alt="screenshot" />
-<img src="./app_screenshot3.png" width=468 height=300 alt="screenshot" />
-<img src="./app_screenshot4.png" width=468 height=300 alt="screenshot" />
+<img src="./app_screenshot1.png" width=400 height=250 alt="screenshot" />
+<img src="./app_screenshot2.png" width=400 height=250 alt="screenshot" />
+<img src="./app_screenshot3.png" width=400 height=250 alt="screenshot" />
+<img src="./app_screenshot4.png" width=400 height=250 alt="screenshot" />
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
