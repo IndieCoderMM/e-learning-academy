@@ -106,4 +106,3 @@ describe('New Reservation Page', () => {
     ).toBeInTheDocument();
   });
 });
-
