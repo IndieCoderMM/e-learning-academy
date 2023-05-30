@@ -14,7 +14,7 @@ const Header = ({ openNav, toggleNav }) => {
   const logOut = () => {
     dispatch(logOutUser());
   };
-  
+
   logOut();
 
   return (
