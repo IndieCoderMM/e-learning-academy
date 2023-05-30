@@ -38,11 +38,12 @@ Our website allows users to reserve online classes while also providing the oppo
 
 ## 📸 Screenshots <a name="screenshot"></a>
 
+<p>
 <img src="./app_screenshot1.png" width=400 height=250 alt="screenshot" />
 <img src="./app_screenshot2.png" width=400 height=250 alt="screenshot" />
 <img src="./app_screenshot3.png" width=400 height=250 alt="screenshot" />
 <img src="./app_screenshot4.png" width=400 height=250 alt="screenshot" />
-
+</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -59,7 +60,7 @@ We used a Kanban board to manage our tasks and track the progress of our project
 
 This is [the link to our Kanban Board](https://github.com/users/IndieCoderMM/projects/4).
 
-We're a group of 3 members: @tobuya, @tanveerisonline, @IndieCoderMM
+We're a group of 3 members: [@tobuya](https://github.com/tobuya), [@tanveerisonline](https://github.com/tanveerisonline), [@IndieCoderMM](https://github.com/indiecodermm)
 
 <img src="./kanban.png" width=600 height=400 alt="kanban board" />
 
