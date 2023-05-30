@@ -14,6 +14,15 @@ schema_course = {
   required: %w[id title description price duration img_url instructor]
 }
 
+
+course_props = {
+  title: { type: :string },
+  description: { type: :string },
+  price: { type: :integer },
+  duration: { type: :integer },
+  img_url: { type: :string },
+  instructor: { type: :string }
+}
 RSpec.describe 'api/courses', type: :request do
   path '/api/courses' do
     get('get all courses') do
@@ -34,14 +43,7 @@ RSpec.describe 'api/courses', type: :request do
       produces 'application/json'
       parameter name: :course, in: :body, schema: {
         type: :object,
-        properties: {
-          title: { type: :string },
-          description: { type: :string },
-          price: { type: :integer },
-          duration: { type: :integer },
-          img_url: { type: :string },
-          instructor: { type: :string }
-        },
+        properties: course_props,
         required: %w[title description price duration img_url instructor]
       }
 
