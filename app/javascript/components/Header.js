@@ -20,12 +20,13 @@ const Header = ({ openNav, toggleNav }) => {
           <span className="hamburger-btn__bar" />
           <span className="hamburger-btn__bar" />
         </button>
-        <h1
+        <Link
+          to="/"
           className="brand-logo"
           style={openNav ? { visibility: 'hidden' } : {}}
         >
           ClassUp
-        </h1>
+        </Link>
       </div>
       {currentUser ? (
         <Button
