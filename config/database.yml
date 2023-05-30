@@ -15,6 +15,7 @@ test:
 
 production:
   <<: *default
-  database: e_learning_academy_production
-  username: dev
-  password: root
+  url: <%= ENV['DATABASE_URL'] %>
+  database: classup_production_database
+  username: classup_database_user
+  password: <%= ENV["CLASSUP_DATABASE_PASSWORD"]
