@@ -37,7 +37,10 @@ const DeleteCourse = () => {
   return (
     <section className="page">
       <h2 className="page__title">
-        Delete Course ({coursesItems.length} Total)
+        Delete Course (
+        {coursesItems.length}
+        {' '}
+        Total)
       </h2>
       <DeleteCourseAlert />
       {coursesItems.length > 0 && currentUser.id != null ? (

@@ -35,7 +35,8 @@ const Home = () => {
       <h2 className="page__title">
         Featured Courses&nbsp;
         <small>
-          (<b>{coursesItems.length}</b>
+          (
+          <b>{coursesItems.length}</b>
           &nbsp;Available)
         </small>
       </h2>
