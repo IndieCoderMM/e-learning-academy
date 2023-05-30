@@ -40,20 +40,11 @@ const Details = () => {
           <h2 className="mb-3">{course.title}</h2>
           <h3 className="fs-5">{course.description}</h3>
           <p>
-            Price:
-            {' '}
-            <b>
-              $
-              {course.price}
-            </b>
+            Price: <b>${course.price}</b>
           </p>
           <p>
             Duration:
-            <b>
-              {course.duration}
-              {' '}
-              minutes
-            </b>
+            <b>{course.duration} minutes</b>
           </p>
           <p>
             Instructor:
@@ -62,7 +53,7 @@ const Details = () => {
           <Button
             type="button"
             className="course-card__action reserve-btn btn-lg mx-auto my-3"
-            onClick={() => navigate('/new_reservation')}
+            onClick={() => navigate(`/new_reservation/${id}`)}
           >
             <BsFillBookmarkPlusFill className="me-1 fs-2" />
             Reserve Course

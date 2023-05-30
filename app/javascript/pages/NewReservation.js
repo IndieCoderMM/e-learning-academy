@@ -1,26 +1,38 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert';
 import { createNewReservation } from '../store/reservation';
 
 function NewReservation() {
   const currentUser = useSelector((state) => state.user);
   const courses = useSelector((state) => state.courses.courses);
-  const [alert, setAlert] = useState('');
+  const { id } = useParams();
+  const [selectedCourseId, setSelectedCourseId] = useState(id);
+  const [alert, setAlert] = useState({ variant: '', message: '' });
   const reservationState = useSelector((state) => state.reservations);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const courseRef = useRef();
   const cityRef = useRef();
   const dateRef = useRef();
 
+  useEffect(() => {
+    if (courses.length > 0 && !id) {
+      setSelectedCourseId(courses[0].id);
+    }
+  }, [courses]);
+
+  const handleSelectChange = (e) => {
+    setSelectedCourseId(e.target.value);
+  };
+
   const handleSubmit = (e) => {
-    if (currentUser.id == null) return;
     e.preventDefault();
+    if (currentUser.id == null) return;
+    const course_id = parseInt(selectedCourseId, 10);
     const data = {
       user_id: currentUser.id,
-      course_id: parseInt(courseRef.current.value, 10),
+      course_id,
       city: cityRef.current.value,
       date: dateRef.current.value,
     };
@@ -31,23 +43,27 @@ function NewReservation() {
   useEffect(() => {
     if (reservationState.status === 'created') navigate('/reservation');
     else if (reservationState.status === 'failed') {
-      setAlert(reservationState.error);
-    } else setAlert('');
-  }, [reservationState, navigate]);
+      setAlert({ variant: 'danger', message: reservationState.error });
+    } else if (currentUser.id == null) {
+      setAlert({
+        variant: 'info',
+        message: 'Please log in to create a new reservation',
+      });
+    } else if (courses.length == 0) {
+      setAlert({ variant: 'info', message: 'No courses available yet!' });
+    } else {
+      setAlert({ variant: '', message: '' });
+    }
+  }, [reservationState, navigate, courses, currentUser]);
 
   return (
     <section className="page form-page">
       <div className="styled-form-container">
         <h2 className="page__title">Make New Reservation</h2>
-        {currentUser.id == null && (
-          <Alert variant="primary" className="py-1">
-            Please log in to create a new reservation.
-          </Alert>
-        )}
 
-        {alert !== '' && (
-          <Alert variant="danger" className="py-1">
-            {alert}
+        {alert.message !== '' && (
+          <Alert variant={alert.variant} className="py-1">
+            {alert.message}
           </Alert>
         )}
 
@@ -71,7 +87,8 @@ function NewReservation() {
               <select
                 id="course-select"
                 className="styled-form__input"
-                ref={courseRef}
+                value={selectedCourseId}
+                onChange={handleSelectChange}
               >
                 {courses.map((course) => (
                   <option
@@ -107,6 +124,7 @@ function NewReservation() {
                 ref={dateRef}
                 className="styled-form__input"
                 placeholder="Select Date"
+                min={new Date().toISOString().split('T')[0]}
                 required
               />
             </label>
