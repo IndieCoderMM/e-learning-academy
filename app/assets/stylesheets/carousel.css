@@ -23,7 +23,7 @@
 }
 
 .carousel__item {
-  width: 33%;
+  width: 32%;
   min-width: 250px;
   flex-shrink: 0;
   border-radius: 4px;
@@ -67,8 +67,8 @@
   transition: all 0.2s ease-in;
 }
 
-.carousel__arrow:hover,
-.carousel__arrow:active {
+.carousel__arrow:not(:disabled):hover,
+.carousel__arrow:not(:disabled):active {
   transform: scale(1.2);
 }
 
@@ -96,6 +96,7 @@
   }
 
   .carousel__control {
-    width: 50px;
+    width: 40px;
+    padding: 0.25rem;
   }
 }

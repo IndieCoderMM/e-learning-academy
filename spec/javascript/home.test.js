@@ -63,7 +63,7 @@ describe('Home page', () => {
     // Assert
     expect(asFragment()).toMatchSnapshot();
     expect(
-      screen.getByRole('heading', { name: /explore featured courses/i }),
+      screen.getByRole('heading', { name: /featured courses/i }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole('heading', { name: /\(\s*2\s*Available\s*\)/i }),

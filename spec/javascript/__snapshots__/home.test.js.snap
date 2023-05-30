@@ -8,7 +8,7 @@ exports[`Home page displays all available courses 1`] = `
     <h2
       class="page__title"
     >
-      Explore Featured Courses 
+      Featured Courses 
       <small>
         (
         <b>

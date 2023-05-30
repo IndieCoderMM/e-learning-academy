@@ -35,7 +35,7 @@ describe('NewCourse', () => {
       </Provider>,
     );
 
-    expect(screen.getByText('Add New Course')).toBeInTheDocument();
+    expect(screen.getByText('Make New Course')).toBeInTheDocument();
     expect(screen.getByLabelText('Title:')).toBeInTheDocument();
     expect(screen.getByLabelText('Course Image URL:')).toBeInTheDocument();
     expect(screen.getByLabelText('Instructor:')).toBeInTheDocument();
@@ -44,7 +44,7 @@ describe('NewCourse', () => {
     expect(screen.getByLabelText('Duration:')).toBeInTheDocument();
   });
 
-  it('does not display the form if user is not logged in', () => {
+  it('displays a message to log in if user is not logged in', () => {
     const storeWithoutUser = configureStore({
       reducer: {
         user: userReducer,
@@ -69,6 +69,8 @@ describe('NewCourse', () => {
       </Provider>,
     );
 
-    expect(screen.queryByLabelText('Title:')).toBeNull();
+    expect(
+      screen.getByText('Please log in to create a new course.'),
+    ).toBeInTheDocument();
   });
 });

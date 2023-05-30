@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
-import {
-  FaGraduationCap, FaClock, FaMoneyBillAlt,
-} from 'react-icons/fa';
+import { FaGraduationCap, FaClock, FaMoneyBillAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { coursesActions } from '../store/coursesSlice';
 
@@ -12,14 +10,17 @@ const DeleteCourseItem = ({ course }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    dispatch(coursesActions.destroyCourse(course.id))
-      .then(() => dispatch(coursesActions.fetchCourses()));
+    dispatch(coursesActions.destroyCourse(course.id));
   };
 
   return (
     <div key={course.id} className="course-card">
       <div className="course-card__frame">
-        <img src={course.img_url} alt={course.title} className="course-card__img" />
+        <img
+          src={course.img_url}
+          alt={course.title}
+          className="course-card__img"
+        />
       </div>
       <Link to={`/courses/${course.id}`} className="course-card__title">
         {course.title}
@@ -55,7 +56,7 @@ const DeleteCourseItem = ({ course }) => {
       </div>
       <Button
         type="button"
-        className="course-card__action w-100 d-flex align-items-center justify-content-center fw-bold"
+        className="w-100 d-flex align-items-center justify-content-center fw-bold"
         variant="outline-danger"
         onClick={handleDelete}
       >

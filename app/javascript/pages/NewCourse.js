@@ -1,14 +1,11 @@
 /* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
-import { connect, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
-import {
-  Button, Container, Form, Alert,
-} from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { Button, Form, Alert } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { coursesActions } from '../store/coursesSlice';
-import NewCourseAlert from '../components/NewCourseAlert';
 
-const NewCourse = ({ createCourse }) => {
+const NewCourse = () => {
   const [title, setTitle] = useState('');
   const [instructor, setInstructor] = useState('');
   const [description, setDescription] = useState('');
@@ -18,9 +15,15 @@ const NewCourse = ({ createCourse }) => {
   const [message, setMessage] = useState('');
   const currentUser = useSelector((state) => state.user);
   const errorMessage = useSelector((state) => state.courses.error);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (currentUser.id == null) {
+      setMessage('You need to log in first');
+      return;
+    }
 
     const newCourse = {
       title,
@@ -31,7 +34,7 @@ const NewCourse = ({ createCourse }) => {
       img_url,
     };
 
-    createCourse(newCourse);
+    dispatch(coursesActions.createCourse(newCourse));
 
     setMessage('Course created successfully!');
   };
@@ -41,102 +44,119 @@ const NewCourse = ({ createCourse }) => {
   }, [errorMessage]);
 
   return (
-    <section className="page">
-      <NewCourseAlert />
-      {currentUser.id != null ? (
-        <Container
-          className="d-flex flex-column justify-content-center align-items-center gap-2 p-3 new-course-form-container"
-          fluid
-        >
-          <h1>Add New Course</h1>
+    <section className="page form-page">
+      <div className="styled-form-container">
+        <h2 className="page__title">Make New Course</h2>
+        {currentUser.id == null && (
+          <Alert variant="primary" className="py-1">
+            Please log in to create a new course.
+          </Alert>
+        )}
 
-          <Form
-            onSubmit={handleSubmit}
-            className="d-flex flex-column p-3 text-dark bg-white rounded w-50 h-50"
-          >
-            {message && (
-            <Alert variant={errorMessage ? 'danger' : 'success'}>{message}</Alert>
-            )}
+        {message && (
+          <Alert variant={errorMessage ? 'danger' : 'success'}>{message}</Alert>
+        )}
+        <Form onSubmit={handleSubmit} className="styled-form">
+          <div className="styled-form__field">
             <Form.Label>
               Title:
               <Form.Control
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                className="styled-form__input"
+                placeholder="Title"
                 required
               />
             </Form.Label>
-            <br />
+          </div>
 
+          <div className="styled-form__field">
             <Form.Label>
               Course Image URL:
               <Form.Control
                 type="text"
                 value={img_url}
                 onChange={(e) => setImgUrl(e.target.value)}
+                className="styled-form__input"
+                placeholder="Course Image URL"
                 required
               />
             </Form.Label>
-            <br />
-
+          </div>
+          <div className="styled-form__field">
             <Form.Label>
               Instructor:
               <Form.Control
                 type="text"
                 value={instructor}
                 onChange={(e) => setInstructor(e.target.value)}
+                className="styled-form__input"
+                placeholder="Course Instructor"
                 required
               />
             </Form.Label>
-            <br />
-
+          </div>
+          <div className="styled-form__field">
             <Form.Label>
               Description:
               <Form.Control
                 type="textarea"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+                className="styled-form__input"
+                placeholder="Description"
                 required
               />
             </Form.Label>
-            <br />
+          </div>
 
+          <div className="styled-form__field">
             <Form.Label>
               Price:
               <Form.Control
                 type="number"
                 value={price}
+                min={0}
                 onChange={(e) => setPrice(e.target.value)}
+                className="styled-form__input"
+                placeholder="Price"
                 required
               />
             </Form.Label>
-            <br />
+          </div>
 
+          <div className="styled-form__field">
             <Form.Label>
               Duration:
               <Form.Control
                 type="number"
+                min={1}
                 value={duration}
                 onChange={(e) => setDuration(e.target.value)}
+                className="styled-form__input"
+                placeholder="Duration"
                 required
               />
             </Form.Label>
-            <br />
+          </div>
 
-            <Button variant="primary" type="submit">
-              Create Course
+          <div className="d-flex gap-2 justify-content-center w-100 my-3">
+            <Button
+              onClick={() => navigate(-1)}
+              className="styled-form__action"
+            >
+              Cancel
             </Button>
-          </Form>
-        </Container>
-      ) : null}
+            <Button type="submit" className="styled-form__action">
+              Confirm
+            </Button>
+          </div>
+        </Form>
+      </div>
     </section>
   );
 };
+/* eslint-enable camelcase */
 
-NewCourse.propTypes = {
-  createCourse: PropTypes.func.isRequired,
-};
-
-export default connect(null, { createCourse: coursesActions.createCourse })(
-  NewCourse,
-);
+export default NewCourse;

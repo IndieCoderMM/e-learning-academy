@@ -4,6 +4,7 @@ import { getUserReservations } from '../store/reservation';
 import ReservedCourse from '../components/ReservedCourse';
 import CustomCarousel from '../components/CustomCarousel';
 import ReservationAlert from '../components/ReservationAlert';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 function Reservation() {
   const reservationState = useSelector((state) => state.reservations);
@@ -16,7 +17,7 @@ function Reservation() {
     if (currentUser.id != null) {
       dispatch(getUserReservations(currentUser.id));
     }
-  }, [currentUser, dispatch]);
+  }, [currentUser.id, dispatch]);
 
   // Loading array of elements
   if (reservationState.data.length) {
@@ -35,6 +36,10 @@ function Reservation() {
       };
       reservedItems.push(item);
     });
+  }
+
+  if (reservationState.status === 'loading') {
+    return <LoadingSpinner text="Checking your reservations ..." />;
   }
 
   return (

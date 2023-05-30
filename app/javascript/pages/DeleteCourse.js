@@ -4,10 +4,12 @@ import { coursesActions } from '../store/coursesSlice';
 import DeleteCourseItem from '../components/DeleteCourseItem';
 import CustomCarousel from '../components/CustomCarousel';
 import DeleteCourseAlert from '../components/DeleteCourseAlert';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const DeleteCourse = () => {
   const dispatch = useDispatch();
   const courses = useSelector((state) => state.courses.courses);
+  const loading = useSelector((state) => state.courses.loading);
   const currentUser = useSelector((state) => state.user);
   let coursesItems = [];
 
@@ -28,8 +30,18 @@ const DeleteCourse = () => {
     });
   }
 
+  if (loading) {
+    return <LoadingSpinner text="Updating the courses ..." />;
+  }
+
   return (
     <section className="page">
+      <h2 className="page__title">
+        Delete Course (
+        {coursesItems.length}
+        {' '}
+        Total)
+      </h2>
       <DeleteCourseAlert />
       {coursesItems.length > 0 && currentUser.id != null ? (
         <CustomCarousel items={coursesItems} />

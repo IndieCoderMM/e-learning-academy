@@ -102,7 +102,7 @@ describe('New Reservation Page', () => {
     );
 
     expect(
-      screen.getByText('Please log in to create a new reservation.'),
+      screen.getByText('Please log in to create a new reservation'),
     ).toBeInTheDocument();
   });
 });
