@@ -69,7 +69,7 @@ RSpec.describe 'Api::CoursesController', type: :request do
       get "/api/courses/#{course.id}"
 
       # Follow redirects if any
-      follow_redirect!
+      # follow_redirect!
 
       # Assert the response status and body
       expect(response).to have_http_status(:ok)

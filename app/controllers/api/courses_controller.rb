@@ -13,11 +13,28 @@ class Api::CoursesController < ApplicationController
     end
   end
 
+  # def show
+  #   # Retrieve the item details based on the provided item ID
+  #   item = Course.find(params[:id])
+
+  #   render json: item, status: :ok
+  # end
+
+  # def destroy
+  #   # Retrieve the item details based on the provided item ID and destroy it.
+  #   course = Course.find(params[:id])
+  #   course.destroy
+
+  #   head :no_content
+  # end
+
   def show
     # Retrieve the item details based on the provided item ID
     item = Course.find(params[:id])
 
     render json: item, status: :ok
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'Course not found' }, status: :not_found
   end
 
   def destroy
@@ -26,6 +43,8 @@ class Api::CoursesController < ApplicationController
     course.destroy
 
     head :no_content
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'Course not found' }, status: :not_found
   end
 
   private
