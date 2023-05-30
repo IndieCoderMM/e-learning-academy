@@ -37,6 +37,7 @@ const NewCourse = () => {
     dispatch(coursesActions.createCourse(newCourse));
 
     setMessage('Course created successfully!');
+    navigate('/');
   };
 
   useEffect(() => {
