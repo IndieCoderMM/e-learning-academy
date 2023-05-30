@@ -16,12 +16,6 @@ function NewReservation() {
   const cityRef = useRef();
   const dateRef = useRef();
 
-  useEffect(() => {
-    if (courses.length > 0 && !id) {
-      setSelectedCourseId(courses[0].id);
-    }
-  }, [courses]);
-
   const handleSelectChange = (e) => {
     setSelectedCourseId(e.target.value);
   };
@@ -32,13 +26,19 @@ function NewReservation() {
     const courseId = parseInt(selectedCourseId, 10);
     const data = {
       user_id: currentUser.id,
-      courseId,
+      course_id: courseId,
       city: cityRef.current.value,
       date: dateRef.current.value,
     };
 
     dispatch(createNewReservation(data));
   };
+
+  useEffect(() => {
+    if (courses.length > 0 && !selectedCourseId) {
+      setSelectedCourseId(courses[0].id);
+    }
+  }, [courses]);
 
   useEffect(() => {
     if (reservationState.status === 'created') navigate('/reservation');

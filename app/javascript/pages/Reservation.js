@@ -17,7 +17,7 @@ function Reservation() {
     if (currentUser.id != null) {
       dispatch(getUserReservations(currentUser.id));
     }
-  }, [currentUser, dispatch]);
+  }, [currentUser.id, dispatch]);
 
   // Loading array of elements
   if (reservationState.data.length) {
