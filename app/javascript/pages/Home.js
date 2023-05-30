@@ -33,10 +33,9 @@ const Home = () => {
   return (
     <section className="page">
       <h2 className="page__title">
-        Explore Featured Courses&nbsp;
+        Featured Courses&nbsp;
         <small>
-          (
-          <b>{coursesItems.length}</b>
+          (<b>{coursesItems.length}</b>
           &nbsp;Available)
         </small>
       </h2>

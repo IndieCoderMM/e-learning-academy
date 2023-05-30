@@ -44,7 +44,7 @@ describe('Details Page', () => {
     expect(asFragment()).toMatchSnapshot();
     expect(screen.getByText(course.title)).toBeInTheDocument();
     expect(screen.getByText(course.description)).toBeInTheDocument();
-    expect(screen.getByText(`Price: $${course.price}`)).toBeInTheDocument();
+    expect(screen.getByText(`$${course.price}`)).toBeInTheDocument();
   });
 
   it('displays "Course not found." when course does not exist', () => {
