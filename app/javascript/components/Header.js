@@ -4,18 +4,10 @@ import Button from 'react-bootstrap/Button';
 import { FaUserAlt } from 'react-icons/fa';
 import { BiLogInCircle } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { logOutUser } from '../store/user';
+import { useSelector } from 'react-redux';
 
 const Header = ({ openNav, toggleNav }) => {
   const currentUser = useSelector((state) => state.user.name);
-  const dispatch = useDispatch();
-
-  const logOut = () => {
-    dispatch(logOutUser());
-  };
-
-  logOut();
 
   return (
     <header className="d-flex justify-content-between p-1 main-header">
