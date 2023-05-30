@@ -96,6 +96,7 @@
   }
 
   .carousel__control {
-    width: 50px;
+    width: 40px;
+    padding: 0.25rem;
   }
 }
