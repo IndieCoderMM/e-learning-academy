@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   post '/users/register', to: 'users#create'
  
   namespace :api do
-    resources :courses, only: [:index, :create, :destroy]
+    resources :courses, only: [:index,:show, :create, :destroy]
     resources :users, only: [] do 
       resources :reservations, only: [:index, :create, :destroy]
     end
   end
+
+  
 
   # Catch-all route for unmatched routes
   get '*path', to: redirect('/')
