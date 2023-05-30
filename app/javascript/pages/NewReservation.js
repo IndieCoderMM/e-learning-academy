@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert';
 import { createNewReservation } from '../store/reservation';
 
-function NewReservation() {
+const NewReservation = () => {
   const currentUser = useSelector((state) => state.user);
   const courses = useSelector((state) => state.courses.courses);
   const { id } = useParams();
@@ -145,6 +145,6 @@ function NewReservation() {
       </div>
     </section>
   );
-}
+};
 
 export default NewReservation;

@@ -6,7 +6,7 @@ import CustomCarousel from '../components/CustomCarousel';
 import ReservationAlert from '../components/ReservationAlert';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-function Reservation() {
+const Reservation = () => {
   const reservationState = useSelector((state) => state.reservations);
   const currentUser = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -61,6 +61,6 @@ function Reservation() {
       ) : null}
     </section>
   );
-}
+};
 
 export default Reservation;

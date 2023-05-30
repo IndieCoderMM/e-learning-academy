@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser, registerUser } from '../store/user';
 
-function Login() {
+const Login = () => {
   const [username, setUsername] = useState('');
   const [mode, setMode] = useState('login');
   const [alert, setAlert] = useState('');
@@ -95,6 +95,6 @@ function Login() {
       </div>
     </section>
   );
-}
+};
 
 export default Login;

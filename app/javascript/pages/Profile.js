@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import { logOutUser } from '../store/user';
 
-function Profile() {
+const Profile = () => {
   const currentUser = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -36,6 +36,6 @@ function Profile() {
       </Button>
     </section>
   );
-}
+};
 
 export default Profile;

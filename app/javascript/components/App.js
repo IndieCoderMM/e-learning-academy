@@ -13,7 +13,7 @@ import Detail from '../pages/Details';
 import Header from './Header';
 import Profile from '../pages/Profile';
 
-function App() {
+const App = () => {
   const [openNav, setOpenNav] = useState(true);
 
   const toggleNav = () => {
@@ -40,6 +40,6 @@ function App() {
       </Stack>
     </main>
   );
-}
+};
 
 export default App;
