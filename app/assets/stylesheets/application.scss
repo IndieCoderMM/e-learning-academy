@@ -1,0 +1,9 @@
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+@import "main";
+@import 'form';
+@import 'carousel';
+@import 'courses';
+@import 'sidebar';
+@import 'details';
+@import 'spinner';

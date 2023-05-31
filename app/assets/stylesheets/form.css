@@ -1,0 +1,71 @@
+.styled-form-container {
+  background-color: var(--primary-transparent);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  min-height: 100vh;
+}
+
+.styled-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.styled-form__field {
+  width: 100%;
+}
+
+.styled-form__field label {
+  width: 100%;
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+.styled-form__input,
+.styled-form__action {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: solid 2px #fff;
+  border-radius: 50rem;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+select.styled-form__input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('assets/drop-down-arrow.png');
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 20px;
+}
+
+.styled-form__input::placeholder {
+  color: #fff;
+  font-weight: 400;
+}
+
+.styled-form__input:focus {
+  outline: none;
+  background-color: #fff;
+  color: #000;
+}
+
+.styled-form__action {
+  transition: all 0.2s;
+}
+
+.styled-form__action:hover {
+  background-color: #fff;
+  color: #000;
+}

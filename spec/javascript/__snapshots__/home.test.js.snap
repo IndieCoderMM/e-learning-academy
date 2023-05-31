@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page displays all available courses 1`] = `
+<DocumentFragment>
+  <section
+    class="page"
+  >
+    <h2
+      class="page__title"
+    >
+      Featured Courses 
+      <small>
+        (
+        <b>
+          2
+        </b>
+         Available)
+      </small>
+    </h2>
+    <div
+      data-testid="mocked-custom-carousel"
+    >
+      <div>
+        Course 1
+      </div>
+      <div>
+        Course 2
+      </div>
+    </div>
+  </section>
+  ,
+</DocumentFragment>
+`;

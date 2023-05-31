@@ -1,0 +1,102 @@
+.carousel-container {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carousel {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+
+.carousel__item {
+  width: 32%;
+  min-width: 250px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: solid 1px #ccc5;
+}
+
+.carousel__control {
+  width: 70px;
+  background: var(--primary-green);
+  padding: 0.85rem;
+  display: flex;
+  align-items: center;
+}
+
+.carousel__control.prev {
+  border-top-right-radius: 50rem;
+  border-bottom-right-radius: 50rem;
+  justify-content: flex-end;
+}
+
+.carousel__control.next {
+  border-top-left-radius: 50rem;
+  border-bottom-left-radius: 50rem;
+  justify-content: flex-start;
+}
+
+.carousel__control.disabled {
+  background-color: #ccc;
+}
+
+.carousel__arrow {
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  transition: all 0.2s ease-in;
+}
+
+.carousel__arrow:not(:disabled):hover,
+.carousel__arrow:not(:disabled):active {
+  transform: scale(1.2);
+}
+
+.pagination-btn {
+  border: none;
+  width: 1.3rem;
+  height: 1.3rem;
+  background: #aaa;
+  color: #fff;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.pagination-btn.active {
+  background-color: var(--primary-green);
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .carousel__item {
+    width: 100%;
+  }
+
+  .carousel__control {
+    width: 40px;
+    padding: 0.25rem;
+  }
+}

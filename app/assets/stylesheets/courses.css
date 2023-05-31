@@ -1,0 +1,134 @@
+.course-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  gap: 0.8rem;
+  height: 100%;
+}
+
+.course-card__title {
+  width: 100%;
+  font-size: 1.1rem;
+  font-family: var(--title-font);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--dark-blue);
+  margin: 0;
+  position: relative;
+}
+
+.course-card__title::before,
+.course-card__title::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: var(--green);
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.course-card__title::before {
+  top: 0;
+  transform-origin: left;
+}
+
+.course-card__title::after {
+  bottom: 0;
+  transform-origin: right;
+}
+
+.course-card__title:hover::before,
+.course-card__title:hover::after {
+  transform: scaleX(1);
+}
+
+.course-card__details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  width: 100%;
+}
+
+.course-card__details div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.course-card__details p {
+  font-size: 0.7rem;
+}
+
+.course-card__frame {
+  width: 100%;
+  max-width: 300px;
+  height: 200px;
+  background-color: aliceblue;
+}
+
+.course-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.course-info,
+.new-course-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-card__icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 2px #aaa;
+  color: #aaa;
+}
+
+.course-card__hr {
+  width: 80%;
+  height: 1px;
+  margin: auto 0 0;
+  border: none;
+  background-color: #ccc;
+}
+
+.course-card_delete {
+  color: #f00;
+  border-color: #f00;
+}
+
+.course-card_delete:hover {
+  font-size: larger;
+}
+
+.new-course-form-container {
+  gap: 0.8rem;
+  padding: 0.5rem;
+  background-color: var(--primary-green);
+  color: #fff;
+}
+
+.course-card__action {
+  width: 80%;
+  background-color: var(--primary-green);
+  border-color: var(--primary-green);
+}
+
+.course-card__action:hover,
+.course-card__action:active {
+  background-color: var(--green);
+  border-color: var(--green);
+}

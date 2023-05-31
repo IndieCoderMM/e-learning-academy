@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500;700&family=Tilt+Warp&display=swap');
+
+:root {
+  --primary-green: #96bf01;
+  --primary-transparent: #96bf01df;
+  --green: #31bf01;
+  --dark-blue: #111586;
+  --title-font: 'Tilt Warp', cursive;
+  --primary-font: 'Roboto', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--primary-font);
+  font-size: 18px;
+}
+
+.main-content {
+  background-color: #fff;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.main-header {
+  background-color: var(--primary-green);
+  color: #fff;
+}
+
+.brand-logo {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.page {
+  background-color: #fff;
+  text-align: center;
+  padding: 0.5rem;
+  min-height: 100%;
+}
+
+.page__title {
+  font-family: var(--title-font);
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin: 1rem 0 2rem;
+}
+
+.form-page {
+  padding: 0;
+  background-image: url('assets/bg-landscape.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.login-form {
+  max-width: 500px;
+}
+
+.hamburger-btn {
+  border: none;
+  background: none;
+  padding: 0.5rem;
+}
+
+.hamburger-btn__bar {
+  display: block;
+  width: 30px;
+  height: 6px;
+  border-radius: 9rem;
+  background-color: #fff;
+  transition: all 0.2s ease-in;
+}
+
+.hamburger-btn:hover .hamburger-btn__bar,
+.hamburger-btn:active .hamburger-btn__bar {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .form-page {
+    background-image: url('assets/bg-portrait.jpg');
+  }
+}
