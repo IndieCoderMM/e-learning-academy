@@ -56,7 +56,7 @@ body {
 
 .form-page {
   padding: 0;
-  background-image: url('assets/bg-landscape.jpg');
+  background-image: url(asset_path('bg-landscape.jpg'));
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
