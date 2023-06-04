@@ -1,3 +1,11 @@
+.form-page {
+  padding: 0;
+  background-image: url(asset_path('bg-landscape.jpg'));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+}
+
 .styled-form-container {
   background-color: var(--primary-transparent);
   color: #fff;
@@ -44,7 +52,7 @@ select.styled-form__input {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: url('assets/drop-down-arrow.png');
+  background-image: url(asset_path('drop-down-arrow.png'));
   background-repeat: no-repeat;
   background-position: right center;
   padding-right: 20px;

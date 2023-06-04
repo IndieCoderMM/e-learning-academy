@@ -54,14 +54,6 @@ body {
   margin: 1rem 0 2rem;
 }
 
-.form-page {
-  padding: 0;
-  background-image: url(asset_path('bg-landscape.jpg'));
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
 .login-form {
   max-width: 500px;
 }
