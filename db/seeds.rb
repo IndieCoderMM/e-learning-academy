@@ -35,27 +35,52 @@ Course.create(
   description: "Build foundational skills in React and Redux.",
   price: 169,
   duration: 55,
-  img_url: "https://img-b.udemycdn.com/course/750x422/705264_caa9_13.jpg",
+  img_url: "https://elysiumacademy.org/wp-content/uploads/2018/12/REACT-JS.jpg",
   instructor: "Peter Ugwu"
 )
 
-6.times do |n|
-    course = Course.create!(
-        title: "Course #{n+1}",
-        description: "This is course #{n+1} description.",
-        price: rand(50..200),
-        duration: rand(20..60),
-        img_url: "https://picsum.photos/500/300",
-        instructor: "Instructor #{n+1}"
-    )
-end
+Course.create(
+  title: "Photography Masterclass",
+  description: "Learn the art of photography and enhance your skills.",
+  price: 199,
+  duration: 40,
+  img_url: "https://ehabphotography.com/wp-content/uploads/2018/08/learn-feature.jpeg",
+  instructor: "Julia Rodriguez"
+)
 
-user = User.create!(name: "Alice")
+Course.create(
+  title: "Graphic Design Essentials",
+  description: "Master the essentials of graphic design and create stunning visuals.",
+  price: 149,
+  duration: 30,
+  img_url: "https://www.miuc.edu.pk/wp-content/uploads/2021/07/graphic-design1.jpg",
+  instructor: "Daniel Thompson"
+)
 
-4.times do |n|
-  reservation = user.reservations.create!(
-    course_id: Course.all.sample.id,
-    date: rand(1.year.from_now..2.years.from_now).to_date,
-    city: ["New York", "London", "Paris", "Tokyo"].sample
-  )
-end
+Course.create(
+  title: "Music Theory for Beginners",
+  description: "Discover the basics of music theory and improve your musical knowledge.",
+  price: 99,
+  duration: 20,
+  img_url: "https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/site/965/images/HYIlFlmDT7CtbkrldoOY_UMC-CMT-3D.png",
+  instructor: "Sophia Martinez"
+)
+
+Course.create(
+  title: "Creative Writing Workshop",
+  description: "Unleash your creativity through various writing exercises and techniques.",
+  price: 129,
+  duration: 25,
+  img_url: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F407391319%2F377863331725%2F1%2Foriginal.20220624-104035?w=1000&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=9b8b5e147b16a6feb08fd00b1d23f6aa",
+  instructor: "Olivia Wilson"
+)
+
+user = User.create(name: "John Doe")
+
+course1 = Course.first
+course2 = Course.second
+course3 = Course.third
+
+reservation1 = Reservation.create(course: course1, user: user, date: Date.today, city: "New York")
+reservation2 = Reservation.create(course: course2, user: user, date: Date.today + 1, city: "Los Angeles")
+reservation3 = Reservation.create(course: course3, user: user, date: Date.today + 2, city: "Chicago")
