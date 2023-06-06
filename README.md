@@ -1,6 +1,6 @@
 <a name="readme-top"></a>
 [![Contributors](https://img.shields.io/github/contributors/IndieCoderMM/e-learning-academy)](https://github.com/IndieCoderMM/e-learning-academy/graphs/contributors)
-[![LastUpdate](https://img.shields.io/github/last-commit/IndieCoderMM/e-learning-academy)](https://github.com/IndieCoderMM/e-learning-academy/commits/main)
+[![LastUpdate](https://img.shields.io/github/last-commit/IndieCoderMM/e-learning-academy)](https://github.com/IndieCoderMM/e-learning-academy/commits/dev)
 [![Stargazers](https://img.shields.io/github/stars/IndieCoderMM/e-learning-academy)](https://github.com/IndieCoderMM/e-learning-academy/stargazers)
 [![Issues](https://img.shields.io/github/issues/IndieCoderMM/e-learning-academy)](https://github.com/IndieCoderMM/e-learning-academy/issues)
 [![License](https://img.shields.io/github/license/IndieCoderMM/e-learning-academy)](https://github.com/IndieCoderMM/e-learning-academy/blob/main/LICENSE)
@@ -237,6 +237,21 @@ This app was designed based on an original design idea by [Murat Korkmaz](https:
 We would like to thank Murat Korkmaz for this inspiring design.
 
 - [App Design Template](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 💎 Resources
+🎨 **Colors**
+- 🟢 Accent: #96bf01
+
+🖌 **Fonts**
+- Logo: [Pacifico](https://fonts.google.com/specimen/Pacifico)
+- Title: [Tilt Warp](https://fonts.google.com/specimen/Tilt+Warp)
+- Normal: [Roboto](https://fonts.google.com/specimen/Roboto)
+
+🖼 **Images**
+- [Landscape Background](https://unsplash.com/photos/dWYU3i-mqEo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Portrait Background](https://unsplash.com/photos/vGgn0xLdy8s?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
