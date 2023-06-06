@@ -24,9 +24,10 @@
     - [🧪 Tests](#-tests)
   - [👨‍💻 Authors  ](#-authors--)
   - [🎯 Future Features  ](#-future-features--)
+  - [🙏 Acknowledgements](#-acknowledgements)
+  - [💎 Resources](#-resources)
   - [🤝 Contribution  ](#-contribution--)
   - [💖 Show Your Support  ](#-show-your-support--)
-  - [🙏 Acknowledgements](#-acknowledgements)
   - [📜 License ](#-license-)
 </details>
 
@@ -219,18 +220,6 @@ Feel free to reach out to us with your suggestions, ideas, or feedback. We are a
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 🤝 Contribution  <a name="contribution"></a>
-
-Contributions, issues, and feature requests are welcome!
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 💖 Show Your Support  <a name="support"></a>
-
-If you like this project, please consider giving it a ⭐.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## 🙏 Acknowledgements
 
 This app was designed based on an original design idea by [Murat Korkmaz](https://www.behance.net/muratk) on Behance. 
@@ -252,6 +241,18 @@ We would like to thank Murat Korkmaz for this inspiring design.
 🖼 **Images**
 - [Landscape Background](https://unsplash.com/photos/dWYU3i-mqEo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 - [Portrait Background](https://unsplash.com/photos/vGgn0xLdy8s?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🤝 Contribution  <a name="contribution"></a>
+
+Contributions, issues, and feature requests are welcome!
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 💖 Show Your Support  <a name="support"></a>
+
+If you like this project, please consider giving it a ⭐.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
